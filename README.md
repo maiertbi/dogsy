@@ -1,5 +1,7 @@
 # Dogsy
 
+We are using Android API 12 (API level 32)
+
 ## colors
 
 All colors can be found in res > values > colors.xml. 
