@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
+    private static ArrayList<User> users = new ArrayList<>();
+
+
     private int id;
     private String firstName;
     private String lastName;
@@ -154,5 +157,35 @@ public class User {
 
     public void setDogId(ArrayList<Integer> dogId) {
         this.dogId = dogId;
+    }
+
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public static void setUsers(ArrayList<User> users) {
+        User.users = users;
+    }
+
+    public static boolean addUser(User user) {
+        return users.add(user);
+    }
+
+    // TODO: create own Exceptions
+    public static boolean userExists(String email) {
+        for (User user: users) {
+            if (user.getEmail().equals(email)) return true;
+        }
+        return false;
+    }
+
+    public static boolean checkPassword(String email, String password) {
+        // has to be checked if userExists
+        for (User user: users) {
+            if (user.getEmail().equals(email)) {
+                return (user.getPassword().equals(password));
+            }
+        }
+        return false;
     }
 }
