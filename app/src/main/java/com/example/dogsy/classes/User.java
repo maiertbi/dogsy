@@ -1,12 +1,18 @@
 package com.example.dogsy.classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 public class User {
+    private static ArrayList<User> users = new ArrayList<>();
+
+
     private int id;
     private String firstName;
     private String lastName;
+   // TODO: change dataype Date
     private Date birthday;
     private char gender;
     private String email;
@@ -154,5 +160,51 @@ public class User {
 
     public void setDogId(ArrayList<Integer> dogId) {
         this.dogId = dogId;
+    }
+
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public static void setUsers(ArrayList<User> users) {
+        User.users = users;
+    }
+
+    public static boolean addUser(User user) {
+        return users.add(user);
+    }
+
+    // TODO: create own Exceptions
+    public static boolean userExists(String email) {
+        for (User user: users) {
+            if (user.getEmail().equals(email)) return true;
+        }
+        return false;
+    }
+
+    public static boolean checkPassword(String email, String password) {
+        // has to be checked if userExists
+        for (User user: users) {
+            if (user.getEmail().equals(email)) {
+                return (user.getPassword().equals(password));
+            }
+        }
+        return false;
+    }
+
+    public static boolean createDummyUsers() {
+        users.add(new User(0, "Paul", "White", new Date(), 'm',
+                "paul.white@gmail.com", "004366456743", "thisisThePassword",
+                "Vienna", "Austria", "This is my biograpy",
+                new ArrayList<>(Arrays.asList(1, 2, 3)), new ArrayList<>(Arrays.asList(1, 2))));
+        users.add(new User(1, "Clara", "Black", new Date(), 'f',
+                "Clara.Black@gmail.com", "00353675839", "claraPassword1",
+                "Dublin", "Ireland", "This is my biograpy2",
+                new ArrayList<>(Collections.singletonList(4)), new ArrayList<>(Collections.emptyList())));
+        users.add(new User(2, "Logan", "Paul", new Date(), 'm',
+                "logan.paul@gmail.com", "004965839020", "loganPaul23",
+                "Dublin", "Ireland", "This is my biograpy3",
+                new ArrayList<>(Arrays.asList(5, 6)), new ArrayList<>(Collections.singletonList(3))));
+        return true;
     }
 }
