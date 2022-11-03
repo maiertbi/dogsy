@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/primaryColor">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/t1_ureg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Please tell me about you"
+            android:textSize="40sp"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="80dp"/>
+
+        <TextView
+            android:id="@+id/t2_ureg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@+id/t1_ureg"
+            android:layout_marginHorizontal="10dp"
+            android:text="First name"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="20dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/t2_ureg"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:inputType="text"
+                android:id="@+id/et_fn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:autofillHints="name"
+                android:hint="First name"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/t3_ureg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@+id/mcv1"
+            android:layout_marginHorizontal="10dp"
+            android:text="Birthday"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="20dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv2"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/t3_ureg"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:id="@+id/et_dd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:hint="DD"
+                android:autofillHints=""
+                android:inputType="number"
+                android:maxLength="2"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"/>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv3"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/t3_ureg"
+            android:layout_toEndOf="@+id/mcv2"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:id="@+id/et_mm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:autofillHints=""
+                android:inputType="number"
+                android:hint="MM"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/t3_ureg"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/mcv3"
+            android:layout_marginStart="15dp"
+            android:textAlignment="center"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:id="@+id/et_yyyy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:autofillHints=""
+                android:inputType="number"
+                android:hint="YYYY"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/t4_ureg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mcv4"
+            android:layout_marginTop="20dp"
+            android:text="Gender"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/t4_ureg"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp"
+            >
+
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dropdown"
+                />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Photos of you"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_below="@id/mcv5"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv3"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_pic1"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp">
+
+                <ImageButton
+                    android:id="@+id/ib_pic1"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_pic2"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp">
+
+                <ImageButton
+                    android:id="@+id/ib_pic2"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_pic3"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp">
+
+                <ImageButton
+                    android:id="@+id/ib_pic3"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll1"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Short text about yourself"
+            android:textColor="@color/white"
+            android:textSize="24sp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv6"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@id/tv4"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:id="@+id/et_bio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:autofillHints=""
+                android:inputType="text"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:maxLines="3"
+                android:maxLength="200"
+                android:scrollbars="vertical"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="24sp"
+            android:layout_below="@id/mcv6"
+            android:layout_marginTop="20dp"
+            android:text="Hometown"
+            android:layout_marginHorizontal="10dp"
+            />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv7"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv5"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:id="@+id/et_ht"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:autofillHints=""
+                android:inputType="text"
+                android:hint="Enter place"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="24sp"
+            android:layout_below="@id/mcv7"
+            android:layout_marginTop="20dp"
+            android:text="Location"
+            android:layout_marginHorizontal="10dp"
+            />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv8"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv6"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:id="@+id/et_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:autofillHints=""
+                android:inputType="text"
+                android:hint="Enter location"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="24sp"
+            android:layout_below="@id/mcv8"
+            android:layout_marginTop="20dp"
+            android:text="Preferred park"
+            android:layout_marginHorizontal="10dp"
+            />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv9"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv7"
+            android:layout_marginTop="0dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <EditText
+                android:id="@+id/et_pp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="24sp"
+                android:hint="Enter park"
+                android:autofillHints=""
+                android:inputType="text"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@null"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <Space
+            android:id="@+id/space1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/mcv9"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/space1"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="24sp"
+
+                />
+            <ImageButton
+                android:id="@+id/ib_submit"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"/>
+
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
