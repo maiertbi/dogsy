@@ -10,16 +10,19 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterPassword extends AppCompatActivity {
-    String userMail;
-    String userPassword1;
-    String userPassword2;
+    private String userMail;
+    private String userPassword1;
+    private String userPassword2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_password);
+
+        //get data from RegisterMail
         Intent mailIntent = getIntent();
         userMail = mailIntent.getStringExtra("mail");
+
         ImageButton ib = (ImageButton) findViewById(R.id.ib_reguserpassword);
         ib.setOnClickListener(new View.OnClickListener() {
             EditText et1 = (EditText) findViewById(R.id.et_reguserpassword1);

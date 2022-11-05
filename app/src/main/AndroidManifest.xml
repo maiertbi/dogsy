@@ -33,6 +33,10 @@
             android:name=".RegisterUser"
             android:label="registerUser">
         </activity>
+        <activity
+            android:name=".RegisterDog"
+            android:label="registerDog">
+        </activity>
     </application>
 
 </manifest>
