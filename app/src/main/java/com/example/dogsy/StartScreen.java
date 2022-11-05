@@ -20,7 +20,7 @@ public class StartScreen extends AppCompatActivity {
         log_in = findViewById(R.id.button_login);
 
         // if click the log in button, move to login_activity.
-        sign_up.setOnClickListener(v -> {
+        log_in.setOnClickListener(v -> {
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
         });
