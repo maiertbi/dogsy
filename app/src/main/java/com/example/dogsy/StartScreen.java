@@ -21,7 +21,7 @@ public class StartScreen extends AppCompatActivity {
 
         // if click the log in button, move to login_activity.
         log_in.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Login.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         });
 
