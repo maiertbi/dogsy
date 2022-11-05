@@ -450,7 +450,7 @@
             android:layout_below="@+id/tv11_dogreg"
             android:layout_centerInParent="true"
             android:src="@drawable/plus_square"
-            android:background="null"
+            android:background="@null"
             android:scaleType="fitCenter"/>
 
         <LinearLayout
@@ -476,7 +476,7 @@
                 android:id="@+id/ib_submit"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="null"
+                android:background="@null"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/next"

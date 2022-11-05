@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor">
+    android:background="@color/primaryColor"
+    tools:context=".RegisterUser">
 
 
     <RelativeLayout
@@ -117,6 +119,7 @@
                 android:autofillHints=""
                 android:inputType="number"
                 android:hint="MM"
+                android:maxLength="2"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:background="@null"
@@ -146,6 +149,7 @@
                 android:autofillHints=""
                 android:inputType="number"
                 android:hint="YYYY"
+                android:maxLength="4"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:background="@null"
@@ -180,7 +184,7 @@
 
 
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/s_gender"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:spinnerMode="dropdown"
@@ -218,7 +222,7 @@
                 app:cardElevation="8dp">
 
                 <ImageButton
-                    android:id="@+id/ib_pic1"
+                    android:id="@+id/ib_userpic1"
                     android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -241,7 +245,7 @@
                 app:cardElevation="8dp">
 
                 <ImageButton
-                    android:id="@+id/ib_pic2"
+                    android:id="@+id/ib_userpic2"
                     android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -264,7 +268,7 @@
                 app:cardElevation="8dp">
 
                 <ImageButton
-                    android:id="@+id/ib_pic3"
+                    android:id="@+id/ib_userpic3"
                     android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -296,7 +300,7 @@
             app:cardElevation="8dp">
 
             <EditText
-                android:id="@+id/et_bio"
+                android:id="@+id/et_userbio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="20sp"
@@ -332,7 +336,7 @@
             app:cardElevation="8dp">
 
             <EditText
-                android:id="@+id/et_ht"
+                android:id="@+id/et_userhometown"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="24sp"
@@ -369,7 +373,7 @@
             app:cardElevation="8dp">
 
             <EditText
-                android:id="@+id/et_location"
+                android:id="@+id/et_userlocation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="24sp"
@@ -406,7 +410,7 @@
             app:cardElevation="8dp">
 
             <EditText
-                android:id="@+id/et_pp"
+                android:id="@+id/et_userpark"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="24sp"
@@ -446,10 +450,10 @@
 
                 />
             <ImageButton
-                android:id="@+id/ib_submit"
+                android:id="@+id/ib_usersubmit"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="null"
+                android:background="@null"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/next"
