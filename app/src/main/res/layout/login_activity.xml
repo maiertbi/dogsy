@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    tools:context=".RegisterPassword">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv1_userEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/t1_login"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="113dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp">
+
+
+        <EditText
+            android:id="@+id/et_loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="password"
+            android:background="@null"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="email"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="24sp" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv2_userPw"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/mcv1_userEmail"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp">
+
+
+        <EditText
+            android:id="@+id/et_loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="password"
+            android:background="@null"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="24sp" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/t1_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Log in with\nyour email"
+        android:textColor="@color/white"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/t2_tryAgain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t1_login"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="19dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text=""
+        android:textColor="#FF3838"
+        android:textSize="20sp" />
+
+
+    <ImageButton
+        android:id="@+id/ib_signin"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:src="@drawable/next"
+        android:scaleType="fitCenter">
+
+    </ImageButton>
+
+
+</RelativeLayout>
