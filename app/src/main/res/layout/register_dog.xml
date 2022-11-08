@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor">
+    android:background="@color/primaryColor"
+    tools:context=".RegisterDog">
 
 
     <RelativeLayout
@@ -449,9 +451,9 @@
             android:layout_height="80dp"
             android:layout_below="@+id/tv11_dogreg"
             android:layout_centerInParent="true"
-            android:src="@drawable/plus_square"
             android:background="@null"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/plus_square" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -34,7 +34,7 @@ public class RegisterUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_user);
-
+        getSupportActionBar().hide();
         //set spinner values
         List<String> genders = new ArrayList<String>();
         Spinner gender = (Spinner) findViewById(R.id.s_gender);
@@ -63,6 +63,7 @@ public class RegisterUser extends AppCompatActivity {
             EditText et_hometown = (EditText)  findViewById(R.id.et_userhometown);
             EditText et_location = (EditText) findViewById(R.id.et_userlocation);
             EditText et_park = (EditText) findViewById(R.id.et_userpark);
+
             @Override
             public void onClick(View view) {
                 userName = et_name.getText().toString();
@@ -72,8 +73,16 @@ public class RegisterUser extends AppCompatActivity {
                 userHometown = et_hometown.getText().toString();
                 userLocation = et_location.getText().toString();
                 userPark = et_park.getText().toString();
-                Intent registerUser = new Intent(RegisterUser.this, RegisterDog.class);
-                startActivity(registerUser);
+
+                /*
+
+                Code to add user to db
+
+                 */
+
+
+                Intent registerDog = new Intent(RegisterUser.this, RegisterDog.class);
+                startActivity(registerDog);
                 finish();
             }
         });

@@ -3,6 +3,7 @@ package com.example.dogsy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,6 +17,7 @@ public class RegisterMail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_mail);
+        getSupportActionBar().hide();
         ImageButton ib = (ImageButton) findViewById(R.id.ib_regusermail);
         ib.setOnClickListener(new View.OnClickListener() {
             EditText et = (EditText) findViewById(R.id.et_regusermail);
