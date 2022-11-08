@@ -18,16 +18,17 @@ import java.util.Date;
 import java.util.List;
 
 public class RegisterUser extends AppCompatActivity {
-    private int userId = 0;
+    private int userId;
     private String userMail;
     private String userPassword;
     private String userName;
+    private String userLastName;
     private String userBirthday;
     private String userGender;
     private String userBio;
     private String userHometown;
-    private String userLocation;
-    private String userPark;
+    private String userCountry;
+    private String userPhone;
     private ArrayList<Integer> pictureId;
 
     @Override
@@ -35,6 +36,7 @@ public class RegisterUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_user);
         getSupportActionBar().hide();
+
         //set spinner values
         List<String> genders = new ArrayList<String>();
         Spinner gender = (Spinner) findViewById(R.id.s_gender);
@@ -53,6 +55,7 @@ public class RegisterUser extends AppCompatActivity {
         ImageButton ib = (ImageButton) findViewById(R.id.ib_usersubmit);
         ib.setOnClickListener(new View.OnClickListener() {
             EditText et_name = (EditText) findViewById(R.id.et_fn);
+            EditText et_lastname = (EditText) findViewById(R.id.et_fn);
             EditText et_dd = (EditText) findViewById(R.id.et_dd);
             EditText et_mm = (EditText) findViewById(R.id.et_mm);
             EditText et_yyyy = (EditText) findViewById(R.id.et_yyyy);
@@ -61,25 +64,25 @@ public class RegisterUser extends AppCompatActivity {
             ImageButton ib_userPic3 = (ImageButton) findViewById(R.id.ib_userpic3);
             EditText et_bio = (EditText) findViewById(R.id.et_userbio);
             EditText et_hometown = (EditText)  findViewById(R.id.et_userhometown);
-            EditText et_location = (EditText) findViewById(R.id.et_userlocation);
-            EditText et_park = (EditText) findViewById(R.id.et_userpark);
+            EditText et_country = (EditText) findViewById(R.id.et_usercountry);
+            EditText et_phone = (EditText) findViewById(R.id.et_userphone);
 
             @Override
             public void onClick(View view) {
                 userName = et_name.getText().toString();
+                userLastName = et_lastname.getText().toString();
                 userBirthday = et_dd.getText().toString() + "." + et_mm.getText().toString() + "." + et_yyyy.getText().toString();
                 userGender = gender.getSelectedItem().toString();
                 userBio = et_bio.getText().toString();
                 userHometown = et_hometown.getText().toString();
-                userLocation = et_location.getText().toString();
-                userPark = et_park.getText().toString();
+                userCountry = et_country.getText().toString();
+                userPhone = et_phone.getText().toString();
 
                 /*
 
                 Code to add user to db
 
                  */
-
 
                 Intent registerDog = new Intent(RegisterUser.this, RegisterDog.class);
                 startActivity(registerDog);

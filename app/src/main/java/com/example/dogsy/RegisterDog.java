@@ -1,6 +1,8 @@
 package com.example.dogsy;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +17,7 @@ public class RegisterDog extends AppCompatActivity {
     private String dogBreed;
     private char dogGender;
     private String dogBio;
-    private char Size;//s = small; m = medium; l = large
+    private char dogSize;//s = small; m = medium; l = large
 
 
     @Override
@@ -31,6 +33,42 @@ public class RegisterDog extends AppCompatActivity {
         ImageButton ib_dogPic1 = (ImageButton) findViewById(R.id.ib_dogpic1);
         ImageButton ib_dogPic2 = (ImageButton) findViewById(R.id.ib_dogpic2);
         ImageButton ib_dogPic3 = (ImageButton) findViewById(R.id.ib_dogpic3);
+        ImageButton ib_dogsmall = (ImageButton) findViewById(R.id.ib_dogsize1);
+        ImageButton ib_dogmedium = (ImageButton) findViewById(R.id.ib_dogsize2);
+        ImageButton ib_doglarge = (ImageButton) findViewById(R.id.ib_dogsize3);
+
+
+        //define dogsize, change image tints
+        ib_dogsmall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ib_dogsmall.setColorFilter(Color.argb(255, 0, 0, 0));//Hex: #000000
+                ib_dogmedium.setColorFilter(Color.argb(255, 169, 169, 169));//Hex:"#A9A9A9"
+                ib_doglarge.setColorFilter(Color.argb(255, 169, 169, 169));
+                dogSize = 's';
+            }
+        });
+
+        ib_dogmedium.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                ib_dogsmall.setColorFilter(Color.argb(255, 169, 169, 169));
+                ib_dogmedium.setColorFilter(Color.argb(255, 0, 0, 0));
+                ib_doglarge.setColorFilter(Color.argb(255, 169, 169, 169));
+                dogSize = 'm';
+            }
+        });
+
+        ib_doglarge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ib_dogsmall.setColorFilter(Color.argb(255, 169, 169, 169));
+                ib_dogmedium.setColorFilter(Color.argb(255, 169, 169, 169));
+                ib_doglarge.setColorFilter(Color.argb(255, 0, 0, 0));
+                dogSize = 'l';
+            }
+        });
+
 
         //add more dogs
         ImageButton ibAddDog = (ImageButton) findViewById(R.id.ib_adddog);
@@ -41,7 +79,7 @@ public class RegisterDog extends AppCompatActivity {
                     dogName = et_dogname.getText().toString();
                     //dogAge = Integer.valueOf(et_dogage.getText().toString());
                     dogBreed = et_dogbreed.getText().toString();
-
+                    dogBio = et_dogbio.getText().toString();
                 /*
 
                 Code to add dog to db
@@ -55,7 +93,7 @@ public class RegisterDog extends AppCompatActivity {
         });
 
 
-        //Fnish process and continue to app
+        //Finish process and continue to app
         ImageButton ibSubmit = (ImageButton) findViewById(R.id.ib_submit);
         ibSubmit.setOnClickListener(new View.OnClickListener() {
 
