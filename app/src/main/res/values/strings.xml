@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Dogsy</string>
+    <string name="signinbutton">signinButton</string>
+    <string name="log_in_with_nyour_email">Log in with\nyour email</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="logo">logo</string>
+    <string name="log_in">log in</string>
+    <string name="sign_up">sign up</string>
+    <string name="what_s_your_email_address">What\'s your email address?</string>
+    <string name="please_enter_your_email_address_to_create_an_account">Please enter your email address to create an account</string>
+    <string name="add_email">Add email</string>
+    <string name="please_enter_a_password">Please enter a password</string>
+    <string name="your_password_needs_to_contain_an_upper_case_letter_number_and_at_least_one_special_character">Your password needs to contain an upper case letter, number and at least one special character</string>
+    <string name="enter_password">Enter password</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>
