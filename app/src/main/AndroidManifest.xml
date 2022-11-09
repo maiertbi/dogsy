@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Dogsy"
         tools:targetApi="31">
         <activity
-            android:name=".StartScreen"
+            android:name=".start.StartScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,24 +26,24 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".start.LoginActivity"
             android:label="login">
         </activity>
         <activity
-            android:name=".RegisterMail"
+            android:name=".start.RegisterMail"
             android:label="registerMail">
         </activity>
 
         <activity
-            android:name=".RegisterPassword"
+            android:name=".start.RegisterPassword"
             android:label="registerPassword">
         </activity>
         <activity
-            android:name=".RegisterUser"
+            android:name=".start.RegisterUser"
             android:label="registerUser">
         </activity>
         <activity
-            android:name=".RegisterDog"
+            android:name=".start.RegisterDog"
             android:label="registerDog">
         </activity>
     </application>

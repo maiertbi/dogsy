@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
-    tools:context=".RegisterPassword">
+    tools:context=".start.RegisterPassword">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv1_userEmail"
@@ -26,13 +26,12 @@
             android:autofillHints="password"
             android:background="@null"
             android:fontFamily="@font/poppins_regular"
-            android:hint="email"
-            android:inputType="textPassword"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:singleLine="true"
+            android:textColorHint="#78909C"
             android:textSize="24sp" />
-
-
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -54,10 +53,11 @@
             android:autofillHints="password"
             android:background="@null"
             android:fontFamily="@font/poppins_regular"
-            android:hint="password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:maxLines="1"
             android:singleLine="true"
+            android:textColorHint="#78909C"
             android:textSize="24sp" />
 
 
@@ -70,7 +70,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="92dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Log in with\nyour email"
+        android:text="@string/log_in_with_nyour_email"
         android:textColor="@color/white"
         android:textSize="40sp" />
 
@@ -89,15 +89,17 @@
 
     <ImageButton
         android:id="@+id/ib_signin"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="10dp"
         android:background="@null"
+        android:contentDescription="@string/signinbutton"
+        android:scaleType="fitCenter"
         android:src="@drawable/next"
-        android:scaleType="fitCenter">
+        tools:ignore="ImageContrastCheck">
 
     </ImageButton>
 

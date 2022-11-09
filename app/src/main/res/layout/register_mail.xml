@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
-    tools:context=".RegisterMail">
+    tools:context=".start.RegisterMail">
 
     <TextView
         android:id="@+id/tv1"
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="120dp"
-        android:text="What's your email address?"
+        android:text="@string/what_s_your_email_address"
         android:textColor="@color/white"
-        android:textSize="45dp"
+        android:textSize="45sp"
         android:fontFamily="@font/poppins_bold">
 
 
@@ -26,10 +26,10 @@
         android:id="@+id/tv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please enter your email address to create an account"
+        android:text="@string/please_enter_your_email_address_to_create_an_account"
         android:layout_below="@+id/tv1"
         android:layout_marginTop="20dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginHorizontal="20dp"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_bold">
@@ -50,13 +50,15 @@
             android:id="@+id/et_regusermail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="24dp"
-            android:hint="Add email"
+            android:textSize="24sp"
+            android:hint="@string/add_email"
             android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/poppins_regular"
             android:background="@null"
             android:maxLines="1"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:autofillHints="emailAddress"
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -66,22 +68,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/mcv1_usermail"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_regular"
         android:layout_marginHorizontal="20dp"/>
 
     <ImageButton
         android:id="@+id/ib_regusermail"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="10dp"
         android:background="@null"
+        android:scaleType="fitCenter"
         android:src="@drawable/next"
-        android:scaleType="fitCenter">
+        android:contentDescription="@string/signinbutton">
 
     </ImageButton>
 
