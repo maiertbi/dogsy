@@ -20,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
+        User.createDummyUsers();
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
