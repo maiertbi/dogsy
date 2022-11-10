@@ -49,9 +49,8 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+            // when successfully logged in, start MainActivity
             tryAgain.setText("successful login! yay!");
-            // TODO: make intent connection (you have to replace NEW_ACTIVITY)
-
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
 
