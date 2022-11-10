@@ -17,5 +17,11 @@
         <!-- Font family -->
         <item name="fontFamily">@font/poppins_family</item>
     </style>
+    <style name="Theme.Dogsy.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Dogsy.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Dogsy.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

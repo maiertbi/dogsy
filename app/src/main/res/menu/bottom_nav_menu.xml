@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/navigation_profile"
+        android:title="Profile" />
+    <item
+        android:id="@+id/matching"
+        android:icon="@drawable/navigation_matching"
+        android:title="Matching" />
+    <item
+        android:id="@+id/chatting"
+        android:icon="@drawable/navigation_chatting"
+        android:title="Chatting" />
+</menu>
