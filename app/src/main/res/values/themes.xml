@@ -18,4 +18,8 @@
         <item name="fontFamily">@font/poppins_family</item>
     </style>
 
+    <style name="rounded_corner">
+        <item name="cornerSize">20dp</item>
+    </style>
+
 </resources>
