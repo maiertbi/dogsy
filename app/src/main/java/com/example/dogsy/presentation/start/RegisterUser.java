@@ -1,4 +1,4 @@
-package com.example.dogsy.start;
+package com.example.dogsy.presentation.start;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,15 +10,17 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dogsy.R;
+import com.example.dogsy.infrastructure.service.UserService;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterUser extends AppCompatActivity {
-    private int userId = 0;
+    //private int userId = 0;
     private String userMail;
     private String userPassword;
-    private ArrayList<Integer> pictureId;
+    //private ArrayList<Integer> pictureId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,14 @@ public class RegisterUser extends AppCompatActivity {
             String userHometown = et_hometown.getText().toString();
             String userLocation = et_location.getText().toString();
             String userPark = et_park.getText().toString();
+
+            //passing input data to UserService
+            try {
+                UserService.instance
+                        .registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
             Intent intent = new Intent(getApplicationContext(), RegisterDog.class);
             startActivity(intent);

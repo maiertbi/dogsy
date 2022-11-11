@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
-    tools:context=".start.RegisterPassword">
+    tools:context=".presentation.start.RegisterPassword">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv1_userEmail"

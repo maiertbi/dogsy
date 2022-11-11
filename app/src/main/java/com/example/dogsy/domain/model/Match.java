@@ -1,4 +1,4 @@
-package com.example.dogsy.classes;
+package com.example.dogsy.domain.model;
 
 public class Match {
     private int id;

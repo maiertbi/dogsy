@@ -34,7 +34,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".start.StartScreen"
+            android:name=".presentation.start.StartScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,19 +47,19 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".start.LoginActivity"
+            android:name=".presentation.start.LoginActivity"
             android:label="login" />
         <activity
-            android:name=".start.RegisterMail"
+            android:name=".presentation.start.RegisterMail"
             android:label="registerMail" />
         <activity
-            android:name=".start.RegisterPassword"
+            android:name=".presentation.start.RegisterPassword"
             android:label="registerPassword" />
         <activity
-            android:name=".start.RegisterUser"
+            android:name=".presentation.start.RegisterUser"
             android:label="registerUser" />
         <activity
-            android:name=".start.RegisterDog"
+            android:name=".presentation.start.RegisterDog"
             android:label="registerDog" />
     </application>
 

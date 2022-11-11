@@ -1,4 +1,4 @@
-package com.example.dogsy.start;
+package com.example.dogsy.presentation.start;
 
 import android.content.Intent;
 import android.os.Bundle;

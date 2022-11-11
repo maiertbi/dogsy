@@ -1,8 +1,6 @@
-package com.example.dogsy.start;
+package com.example.dogsy.presentation.start;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -10,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dogsy.R;
-import com.example.dogsy.classes.User;
+import com.example.dogsy.infrastructure.service.UserService;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -18,6 +16,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+
+        // TODO: Remove, just for testing.
+        UserService.instance.signOut();
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                 tryAgain.setText("Please enter your email and password.");
                 return;
             }
+            /*backend:
             else if(!User.userExists(email)) {
                 tryAgain.setText("Email does not exist.\nPlease try again.");
                 return;
@@ -43,9 +46,11 @@ public class LoginActivity extends AppCompatActivity {
             else if(!User.checkPassword(email,password)) {
                 tryAgain.setText("Incorrect password.\nPlease try again.");
                 return;
-            }
+            }*/
+            UserService.instance
+                    .signInUser(email, password);
 
-            tryAgain.setText("successful login! yay!");
+
             // TODO: make intent connection (you have to replace NEW_ACTIVITY)
 
             /*
