@@ -11,6 +11,7 @@
     <color name="primaryColor">#83BD75</color>
     <color name="primaryColorDarker">#4E944F</color>
     <color name="primaryColorLighter">#B4E197</color>
+    <color name="primaryColorLightest">#E8EEBF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
