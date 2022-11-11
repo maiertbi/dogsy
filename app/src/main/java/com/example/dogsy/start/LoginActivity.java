@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dogsy.MainActivity;
 import com.example.dogsy.R;
 import com.example.dogsy.classes.User;
 
@@ -18,6 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+
+        User.createDummyUsers();
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             String email = et_email.getText().toString();
             String password = et_password.getText().toString();
 
+
             if(email.isEmpty() || password.isEmpty()) {
                 tryAgain.setText("Please enter your email and password.");
                 return;
@@ -45,16 +49,10 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+            // when successfully logged in, start MainActivity
             tryAgain.setText("successful login! yay!");
-            // TODO: make intent connection (you have to replace NEW_ACTIVITY)
-
-            /*
-            Intent intent = new Intent(getApplicationContext(), NEW_ACTIVITY.class);
-            intent.putExtra("mail", email);
-            intent.putExtra("password", password);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
-            finish();
-            */
 
         });
     }
