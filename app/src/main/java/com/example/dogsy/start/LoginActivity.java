@@ -2,14 +2,13 @@ package com.example.dogsy.start;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dogsy.MainActivity;
+import com.example.dogsy.MatchingActivity;
 import com.example.dogsy.R;
 import com.example.dogsy.classes.User;
 
@@ -51,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // when successfully logged in, start MainActivity
             tryAgain.setText("successful login! yay!");
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MatchingActivity.class);
             startActivity(intent);
 
         });
