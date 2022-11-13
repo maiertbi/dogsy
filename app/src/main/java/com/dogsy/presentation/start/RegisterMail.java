@@ -1,4 +1,4 @@
-package com.example.dogsy.presentation.start;
+package com.dogsy.presentation.start;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dogsy.R;
+import com.dogsy.R;
 
 public class RegisterMail extends AppCompatActivity {
 

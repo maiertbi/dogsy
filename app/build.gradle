@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.dogsy'
+    namespace 'com.dogsy'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.dogsy"
+        applicationId "com.dogsy"
         minSdk 24
         targetSdk 32
         versionCode 1
@@ -25,8 +25,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
     }
 }
 

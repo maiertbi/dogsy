@@ -1,8 +1,10 @@
-package com.example.dogsy;
+package com.dogsy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.dogsy.R;
 
 public class ProfileActivity extends AppCompatActivity {
 

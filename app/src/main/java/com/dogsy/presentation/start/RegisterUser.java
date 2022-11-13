@@ -1,4 +1,4 @@
-package com.example.dogsy.presentation.start;
+package com.dogsy.presentation.start;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +9,17 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dogsy.R;
-import com.example.dogsy.infrastructure.service.UserService;
+import com.dogsy.application.service.ProfileService;
+import com.dogsy.R;
+import com.dogsy.domain.model.Dog;
+import com.dogsy.domain.model.User;
 
 import java.text.ParseException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
+import static java.util.stream.Collectors.*;
 
 public class RegisterUser extends AppCompatActivity {
     //private int userId = 0;
@@ -26,6 +31,9 @@ public class RegisterUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_user);
+
+        // TODO: Remove, just for testing.
+        ProfileService.instance.signOut();
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -49,11 +57,13 @@ public class RegisterUser extends AppCompatActivity {
         EditText et_park = findViewById(R.id.et_userpark);
 
         //set spinner values
-        List<String> genders = new ArrayList<>();
         Spinner gender = (Spinner) findViewById(R.id.s_gender);
-        genders.add("male");
-        genders.add("female");
-        genders.add("non-binary");
+
+        List<String> genders = Arrays.stream(User.Gender.values())
+                .map(Enum::toString)
+                .map(String::toLowerCase)
+                .collect(toList());
+
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, genders);
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gender.setAdapter(genderAdapter);
@@ -63,19 +73,16 @@ public class RegisterUser extends AppCompatActivity {
         ib.setOnClickListener(view -> {
             String userName = et_name.getText().toString();
             String userBirthday = et_dd.getText().toString() + "." + et_mm.getText().toString() + "." + et_yyyy.getText().toString();
-            String userGender = gender.getSelectedItem().toString();
+            String userGender = gender.getSelectedItem().toString().toUpperCase();
             String userBio = et_bio.getText().toString();
             String userHometown = et_hometown.getText().toString();
             String userLocation = et_location.getText().toString();
             String userPark = et_park.getText().toString();
 
-            //passing input data to UserService
-            try {
-                UserService.instance
-                        .registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            // passing input data to UserService
+            ProfileService.instance.registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark);
+
+            // ProfileService.instance.addDog("Doggo", 44, "MALE", true, "SMALL", "YES", "I am a dog.", Set.of("ACTIVE", "DOMINANT"));
 
             Intent intent = new Intent(getApplicationContext(), RegisterDog.class);
             startActivity(intent);

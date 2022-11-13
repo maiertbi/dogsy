@@ -1,8 +1,8 @@
-package com.example.dogsy.presentation.start;
+package com.dogsy.presentation.start;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.dogsy.R;
+import com.dogsy.R;
 
 public class RegisterDog extends AppCompatActivity {
     @Override

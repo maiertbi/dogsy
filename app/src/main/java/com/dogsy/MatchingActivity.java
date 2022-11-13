@@ -1,14 +1,16 @@
-package com.example.dogsy;
+package com.dogsy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AllChatsActivity extends AppCompatActivity {
+import com.dogsy.R;
+
+public class MatchingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_chats);
+        setContentView(R.layout.activity_matching);
     }
 }
