@@ -8,10 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dogsy.MatchingActivity;
+import com.dogsy.presentation.MatchingActivity;
 import com.dogsy.application.service.ProfileService;
 import com.dogsy.R;
-import java.util.Set;
 
 
 public class LoginActivity extends AppCompatActivity {

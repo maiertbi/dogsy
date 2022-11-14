@@ -1,11 +1,10 @@
-package com.dogsy;
+package com.dogsy.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dogsy.presentation.ChattingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.dogsy.R;
@@ -39,7 +38,7 @@ public class MatchingActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.chatting:
-                    startActivity(new Intent(getApplicationContext(), ChattingActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ChatActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;

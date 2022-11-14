@@ -1,4 +1,4 @@
-package com.dogsy.presentation;
+package com.dogsy.presentation.fragments;
 
 import android.os.Bundle;
 
