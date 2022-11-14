@@ -1,11 +1,14 @@
 package com.dogsy.presentation.start;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.dogsy.MatchingActivity;
 import com.dogsy.application.service.ProfileService;
 import com.dogsy.R;
 import java.util.Set;

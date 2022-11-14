@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dogsy.presentation.ChattingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.dogsy.R;
