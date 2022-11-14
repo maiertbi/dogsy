@@ -6,11 +6,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.dogsy.application.service.ProfileService;
 import com.dogsy.R;
-
 import java.util.Set;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,8 +18,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        // TODO: Remove, just for testing.
+
+        // TODO: Remove next line. This is just for testing.
         ProfileService.instance.signOut();
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             String email = et_email.getText().toString();
             String password = et_password.getText().toString();
 
+
             if(email.isEmpty() || password.isEmpty()) {
                 tryAgain.setText("Please enter your email and password.");
                 return;
@@ -43,14 +45,11 @@ public class LoginActivity extends AppCompatActivity {
             ProfileService.instance.signInUser(email, password);
 
             // TODO: make intent connection (you have to replace NEW_ACTIVITY)
+            Intent intent = new Intent(getApplicationContext(), MatchingActivity.class);
+            // intent.putExtra("mail", email);
+            // intent.putExtra("password", password);
 
-            /*
-            Intent intent = new Intent(getApplicationContext(), NEW_ACTIVITY.class);
-            intent.putExtra("mail", email);
-            intent.putExtra("password", password);
             startActivity(intent);
-            finish();
-            */
 
         });
     }
