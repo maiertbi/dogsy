@@ -1,35 +1,36 @@
-package com.dogsy;
+package com.dogsy.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dogsy.presentation.ChattingActivity;
+import com.dogsy.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import com.dogsy.R;
-
-public class ProfileActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_chatting);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.profile);
+        bottomNavigationView.setSelectedItemId(R.id.chatting);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId())
             {
                 case R.id.profile:
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    overridePendingTransition(0, 0);
+                    finish();
                     return true;
 
                 case R.id.matching:
@@ -39,9 +40,6 @@ public class ProfileActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.chatting:
-                    startActivity(new Intent(getApplicationContext(), ChattingActivity.class));
-                    overridePendingTransition(0, 0);
-                    finish();
                     return true;
             }
             return false;
