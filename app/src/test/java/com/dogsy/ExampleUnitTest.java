@@ -1,4 +1,4 @@
-package com.example.dogsy;
+package com.dogsy;
 
 import org.junit.Test;
 

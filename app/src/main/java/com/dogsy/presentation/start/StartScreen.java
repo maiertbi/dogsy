@@ -1,4 +1,4 @@
-package com.example.dogsy.start;
+package com.dogsy.presentation.start;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.dogsy.R;
+import com.dogsy.R;
 
 public class StartScreen extends AppCompatActivity {
     @Override

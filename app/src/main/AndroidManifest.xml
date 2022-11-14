@@ -12,22 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dogsy"
         tools:targetApi="31">
+        
         <activity
-            android:name=".ProfileActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Profile"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ChattingActivity"
+            android:name="com.dogsy.presentation.ChattingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -35,20 +22,29 @@
         </activity>
         <activity
             android:name=".C"
+
+
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MatchingActivity"
+            android:name="com.dogsy.MatchingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".start.StartScreen"
+            android:name="com.dogsy.ProfileActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.dogsy.presentation.start.StartScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,19 +57,19 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".start.LoginActivity"
+            android:name="com.dogsy.presentation.start.LoginActivity"
             android:label="login" />
         <activity
-            android:name=".start.RegisterMail"
+            android:name="com.dogsy.presentation.start.RegisterMail"
             android:label="registerMail" />
         <activity
-            android:name=".start.RegisterPassword"
+            android:name="com.dogsy.presentation.start.RegisterPassword"
             android:label="registerPassword" />
         <activity
-            android:name=".start.RegisterUser"
+            android:name="com.dogsy.presentation.start.RegisterUser"
             android:label="registerUser" />
         <activity
-            android:name=".start.RegisterDog"
+            android:name="com.dogsy.presentation.start.RegisterDog"
             android:label="registerDog" />
     </application>
 
