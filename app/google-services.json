@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "155640271070",
+    "project_id": "dogsy-26b47",
+    "storage_bucket": "dogsy-26b47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155640271070:android:40298c9b053b9390c3f24f",
+        "android_client_info": {
+          "package_name": "com.dogsy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155640271070-suvmdjal0o7hqttk1kqupi06tr0gntlo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dogsy",
+            "certificate_hash": "25e4e33c46ad69051dba37ac2f678ec9f5bae5d7"
+          }
+        },
+        {
+          "client_id": "155640271070-ohl08g0lbfr77kpc4j570n129p4cmjn1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3-lo5lWGo9kqjFEFwjCSSnuwqERQ3-hM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155640271070-ohl08g0lbfr77kpc4j570n129p4cmjn1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
