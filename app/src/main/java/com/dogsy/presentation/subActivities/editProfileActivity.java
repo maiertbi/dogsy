@@ -1,4 +1,4 @@
-package com.dogsy.presentation;
+package com.dogsy.presentation.subActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.dogsy.R;
+import com.dogsy.presentation.ChatActivity;
+import com.dogsy.presentation.MatchingActivity;
+import com.dogsy.presentation.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
