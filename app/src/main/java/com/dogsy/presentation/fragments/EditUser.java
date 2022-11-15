@@ -10,19 +10,19 @@ import android.view.ViewGroup;
 
 import com.dogsy.R;
 
-public class editUser extends Fragment {
+public class EditUser extends Fragment {
 
     private static final String USER_ID = "userId";
 
 
     private Integer userId;
 
-    public editUser() {
+    public EditUser() {
         // Required empty public constructor
     }
 
-    public static editUser newInstance(Integer userId) {
-        editUser fragment = new editUser();
+    public static EditUser newInstance(Integer userId) {
+        EditUser fragment = new EditUser();
         Bundle args = new Bundle();
         args.putInt(USER_ID, userId);
         fragment.setArguments(args);

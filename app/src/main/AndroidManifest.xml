@@ -20,8 +20,8 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.dogsy.presentation.subActivities.editProfileActivity"
-            android:exported="false">
+            android:name="com.dogsy.presentation.subActivities.EditProfileActivity"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
