@@ -10,28 +10,18 @@ import android.view.ViewGroup;
 
 import com.dogsy.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link UserDogView#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class UserDogView extends Fragment {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "userId";
 
-    private String mParam1;
-    private String mParam2;
+    private Integer userId;
 
     public UserDogView() {
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static UserDogView newInstance(String param1, String param2) {
+    public static UserDogView newInstance(Integer userId) {
         UserDogView fragment = new UserDogView();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, userId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,8 +30,7 @@ public class UserDogView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            userId = getArguments().getInt(ARG_PARAM1, -1);
         }
     }
 
