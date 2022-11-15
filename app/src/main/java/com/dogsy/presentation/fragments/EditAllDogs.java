@@ -10,18 +10,23 @@ import android.view.ViewGroup;
 
 import com.dogsy.R;
 
-public class UserDogView extends Fragment {
-    private static final String ARG_PARAM1 = "userId";
 
-    private Integer userId;
+public class EditAllDogs extends Fragment {
 
-    public UserDogView() {
+
+    private static final String LIST_ALL_DOGS = "param1";
+
+    private Integer allDogs;
+
+    public EditAllDogs() {
+        // Required empty public constructor
     }
 
-    public static UserDogView newInstance(Integer userId) {
-        UserDogView fragment = new UserDogView();
+    public static EditAllDogs newInstance(Integer getAllDogs) {
+        EditAllDogs fragment = new EditAllDogs();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, userId);
+        args.putInt(LIST_ALL_DOGS, getAllDogs);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -30,14 +35,13 @@ public class UserDogView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            userId = getArguments().getInt(ARG_PARAM1, -1);
+            allDogs = getArguments().getInt(LIST_ALL_DOGS);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_dog_view, container, false);
+        return inflater.inflate(R.layout.fragment_edit_all_dogs, container, false);
     }
 }

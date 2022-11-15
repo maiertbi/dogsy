@@ -158,7 +158,7 @@ public class Dog {
     public enum DogSize {
         SMALL,
         MEDIUM,
-        LARGE;
+        LARGE
     }
 
     public enum Personality {
@@ -168,6 +168,6 @@ public class Dog {
         PLAYFUL,
         KID_FRIENDLY,
         COURAGEOUS,
-        AFFECTIONATE;
+        AFFECTIONATE
     }
 }
