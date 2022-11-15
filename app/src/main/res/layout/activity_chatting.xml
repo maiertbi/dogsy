@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.dogsy.presentation.ChatActivity">
 
+    <!-- TODO: Frame layout not needed here-->
     <FrameLayout
         android:id="@+id/frame_layout_chatting"
         android:layout_width="0dp"
