@@ -14,6 +14,9 @@
     <string name="your_password_needs_to_contain_an_upper_case_letter_number_and_at_least_one_special_character">Your password needs to contain an upper case letter, number and at least one special character</string>
     <string name="enter_password">Enter password</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="like">like</string>
+    <string name="dislike">dislike</string>
 
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
