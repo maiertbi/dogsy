@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor">
+    android:background="@color/primaryColor"
+    tools:context="com.dogsy.presentation.start.RegisterDog">
 
 
     <RelativeLayout
@@ -400,7 +402,8 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/dog"
                     android:scaleType="fitCenter"
-                    android:padding="35dp"/>
+                    android:padding="35dp"
+                    app:tint="#A9A9A9"/>
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="1dp"
@@ -412,7 +415,8 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/dog"
                     android:scaleType="fitCenter"
-                    android:padding="25dp"/>
+                    android:padding="25dp"
+                    app:tint="#A9A9A9"/>
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="1dp"
@@ -424,7 +428,8 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/dog"
                     android:scaleType="fitCenter"
-                    android:padding="15dp"/>
+                    android:padding="15dp"
+                    app:tint="#A9A9A9"/>
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
