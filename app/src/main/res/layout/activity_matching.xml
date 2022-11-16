@@ -24,7 +24,7 @@
         layout="@layout/toolbar" />
 
     <ImageButton
-        android:id="@+id/like_button"
+        android:id="@+id/button_like"
         android:contentDescription="@string/like"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -39,7 +39,7 @@
         app:srcCompat="@drawable/like" />
 
     <ImageButton
-        android:id="@+id/dislike_button"
+        android:id="@+id/button_dislike"
         android:contentDescription="@string/dislike"
         android:layout_width="50dp"
         android:layout_height="50dp"
