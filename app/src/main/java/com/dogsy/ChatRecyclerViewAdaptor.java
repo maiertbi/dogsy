@@ -8,17 +8,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class ChatRecyclerViewAdaptor extends RecyclerView.Adapter<ChatRecyclerViewAdaptor.ViewHolder> {
     private ArrayList<ChatItem> mData = null;
 
-    public RecyclerViewAdapter(ArrayList<ChatItem> data) {
+    public ChatRecyclerViewAdaptor(ArrayList<ChatItem> data) {
         mData = data;
     }
 
@@ -30,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = inflater.inflate(R.layout.item_chat, parent, false);
-        RecyclerViewAdapter.ViewHolder vh = new RecyclerViewAdapter.ViewHolder(view);
+        ChatRecyclerViewAdaptor.ViewHolder vh = new ChatRecyclerViewAdaptor.ViewHolder(view);
 
         return vh;
     }
@@ -41,11 +40,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ChatItem item = mData.get(position);
 
 //        holder.imageView.setBackground(item.getIcon());
-//        Glide.with(holder.itemView.context).load("")
-//                .placeholder()
-//                .apply(RequestOptions().circleCrop())
-//                .into(holder.imageView)
-
         Glide.with(holder.itemView)
                 .load(item.getIcon())
                 .circleCrop()
