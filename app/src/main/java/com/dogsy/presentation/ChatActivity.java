@@ -28,9 +28,7 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerViewAdapter mAdapter = null;
     ArrayList<ChatItem> mList;
 
-    private Drawable mImageDrawable;
-    private String mMainText;
-    private String mSubText;
+    private ArrayList<Drawable> mImageDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,18 +67,24 @@ public class ChatActivity extends AppCompatActivity {
         // recycler view
         mRecyclerView = findViewById(R.id.chatting_list_view);
         mList = new ArrayList<>();
+        mImageDrawable = new ArrayList<>();
 
         mAdapter = new RecyclerViewAdapter(mList);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
-        mImageDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.person_plus, null);
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.fabian, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.yujin, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.tobi, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.david, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.alex, null));
 
-        addItem(mImageDrawable, "Fabian",   "hey baby :)");
-        addItem(mImageDrawable, "Yujin",  "Good morning!");
-        addItem(mImageDrawable, "Tobi",  "genius");
-        addItem(mImageDrawable, "David",  "I have a non-binary dog");
-        addItem(mImageDrawable, "Alex",  "Still no answer from her");
+
+        addItem(mImageDrawable.get(0), "Fabian",   "hey baby :)");
+        addItem(mImageDrawable.get(1), "Yujin",  "Good morning!");
+        addItem(mImageDrawable.get(2), "Tobi",  "genius");
+        addItem(mImageDrawable.get(3), "David",  "I have a non-binary dog");
+        addItem(mImageDrawable.get(4), "Alex",  "Still no answer from her");
 
         mAdapter.notifyDataSetChanged();
     }

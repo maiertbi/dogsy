@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,7 +40,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatItem item = mData.get(position);
 
-        holder.imageView.setBackground(item.getIcon());
+//        holder.imageView.setBackground(item.getIcon());
+//        Glide.with(holder.itemView.context).load("")
+//                .placeholder()
+//                .apply(RequestOptions().circleCrop())
+//                .into(holder.imageView)
+
+        Glide.with(holder.itemView)
+                .load(item.getIcon())
+                .circleCrop()
+                .into(holder.imageView);
+
         holder.mainText.setText(item.getTitle());
         holder.subText.setText(item.getDesc());
     }
