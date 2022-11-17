@@ -133,6 +133,11 @@
                 android:background="@null"
                 android:maxLines="1"
                 android:singleLine="true"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
@@ -268,11 +273,6 @@
                     android:padding="25dp"/>
 
             </com.google.android.material.card.MaterialCardView>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_dogpic3"
