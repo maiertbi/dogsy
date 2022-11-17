@@ -132,6 +132,7 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatting_list_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingLeft="5dp"
