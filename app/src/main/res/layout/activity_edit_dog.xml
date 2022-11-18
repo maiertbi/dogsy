@@ -35,27 +35,30 @@
                         android:inputType="none"
                         android:text="Bobby"
                         android:textSize="24sp" />
-                    <TextView
-                        android:id="@+id/text_dob"
+                    <EditText
+                        android:id="@+id/text_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:fontFamily="@font/poppins_regular"
+                        android:background="@null"
                         android:text="4"
                         android:textColor="@color/black" />
-                    <TextView
+                    <EditText
                         android:id="@+id/text_breed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@null"
                         android:textSize="20sp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="german shepherd"
                         android:textColor="@color/black" />
-                    <TextView
+                    <EditText
                         android:id="@+id/text_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
+                        android:background="@null"
                         android:fontFamily="@font/poppins_regular"
                         android:text="female"
                         android:textColor="@color/black" />
@@ -185,7 +188,7 @@
 
             <EditText
                 android:layout_marginHorizontal="10dp"
-                android:id="@+id/text_useredit_bio"
+                android:id="@+id/text_bio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"

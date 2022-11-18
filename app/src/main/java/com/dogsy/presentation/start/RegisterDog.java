@@ -10,6 +10,8 @@ import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.dogsy.R;
+import com.dogsy.presentation.MatchingActivity;
+import com.dogsy.presentation.fragments.UserDogView;
 
 
 public class RegisterDog extends AppCompatActivity {
@@ -123,18 +125,12 @@ public class RegisterDog extends AppCompatActivity {
                 dogBreed = et_dogbreed.getText().toString();
                 dogBio = et_dogbio.getText().toString();
 
+                //TODO add dog to db
 
 
-                /*
-                Code to add dog to db
-                 */
-
-
-
-                //
-                //Intent swipingScreen = new Intent(RegisterDog.this, swipingScreen.class);
-                //startActivity(swiping Screen);
-                //finish();
+                Intent swipingScreen = new Intent(RegisterDog.this, MatchingActivity.class);
+                startActivity(swipingScreen);
+                finish();
             }
         });
     }
