@@ -3,13 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B12B2B"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.fragments.EditAllDogs">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="ALL DOGS FRAGMENT" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/list_alldogs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#AEAEAE"
+                android:dividerHeight="2dp"
+                android:layout_marginHorizontal="20dp">
+            </ListView>
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Add a dog"
+                android:textColor="@color/primaryColor"
+                android:layout_below="@+id/list_alldogs"
+                android:layout_marginTop="120dp"
+                android:textSize="20dp"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/tv1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/plus_square"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                app:tint="@color/primaryColor"/>
+        </RelativeLayout>
+
+    </ScrollView>
 
 </FrameLayout>
