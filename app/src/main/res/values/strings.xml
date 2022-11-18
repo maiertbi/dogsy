@@ -17,6 +17,8 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="like">like</string>
     <string name="dislike">dislike</string>
+    <string name="matching_list">Matching List</string>
+    <string name="chat">Chat</string>
 
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
