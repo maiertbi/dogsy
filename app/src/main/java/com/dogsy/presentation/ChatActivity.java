@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dogsy.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.dogsy.ChatItem;
+import com.dogsy.presentation.classes.ChatItem;
 import com.dogsy.ChatRecyclerViewAdaptor;
-import com.dogsy.PhotoItem;
+import com.dogsy.presentation.classes.PhotoItem;
 import com.dogsy.PhotoRecyclerViewAdaptor;
 
 import androidx.core.content.res.ResourcesCompat;

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.dogsy.presentation.classes.PhotoItem;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

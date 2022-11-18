@@ -1,4 +1,4 @@
-package com.dogsy;
+package com.dogsy.presentation.classes;
 
 import android.graphics.drawable.Drawable;
 
