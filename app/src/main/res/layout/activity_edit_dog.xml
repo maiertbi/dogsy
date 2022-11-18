@@ -1,9 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.subActivities.editDog">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragments.EditUser">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/ll_editname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="none"
+                        android:text="Bobby"
+                        android:textSize="24sp" />
+                    <TextView
+                        android:id="@+id/text_dob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="4"
+                        android:textColor="@color/black" />
+                    <TextView
+                        android:id="@+id/text_breed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="german shepherd"
+                        android:textColor="@color/black" />
+                    <TextView
+                        android:id="@+id/text_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="female"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button_apply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Apply"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+            <View
+                android:id="@+id/view_name"
+                android:layout_height="2dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:background="#AEAEAE"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Photos"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"/>
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv3"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_pic1"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    app:cardCornerRadius="15dp">
+                    <ImageButton
+                        android:id="@+id/ib_userpic1"
+                        android:background="#dddddd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/person_plus"
+                        android:scaleType="fitCenter"
+                        android:padding="25dp"
+                        app:tint="@color/white"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_pic2"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    app:cardCornerRadius="15dp">
+                    <ImageButton
+                        android:id="@+id/ib_userpic2"
+                        android:background="#dddddd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/person_plus"
+                        android:scaleType="fitCenter"
+                        android:padding="25dp"
+                        app:tint="@color/white"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_pic3"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    app:cardCornerRadius="15dp">
+                    <ImageButton
+                        android:id="@+id/ib_userpic3"
+                        android:background="#dddddd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/person_plus"
+                        android:scaleType="fitCenter"
+                        android:padding="25dp"
+                        app:tint="@color/white"/>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+            <View
+                android:id="@+id/view_photos"
+                android:layout_height="2dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:background="#AEAEAE"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp">
+                <TextView
+                    android:id="@+id/text_aboutdog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="About Bobby"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_marginHorizontal="10dp"
+                android:id="@+id/text_useredit_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:padding="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="loves to play and long walks, very energetic"
+                android:textSize="18sp"
+                android:inputType="none"/>
+            <View
+                android:id="@+id/view_bio"
+                android:layout_height="2dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:background="#AEAEAE"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Personality"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp" />
+            </RelativeLayout>
+
+
+            <View
+                android:id="@+id/view_hometown"
+                android:layout_height="2dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:background="#AEAEAE"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Size"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="20sp"
+                    android:layout_marginHorizontal="10dp"/>
+
+            </RelativeLayout>
+
+>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginHorizontal="10dp">
+
+                    <ImageButton
+                        android:id="@+id/ib_dogsize1"
+                        android:background="@color/white"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/dog"
+                        android:scaleType="fitCenter"
+                        android:padding="35dp"
+                        app:tint="#A9A9A9"/>
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+                    <ImageButton
+                        android:id="@+id/ib_dogsize2"
+                        android:background="@color/white"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/dog"
+                        android:scaleType="fitCenter"
+                        android:padding="25dp"
+                        app:tint="#A9A9A9"/>
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"/>
+                    <ImageButton
+                        android:id="@+id/ib_dogsize3"
+                        android:background="@color/white"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/dog"
+                        android:scaleType="fitCenter"
+                        android:padding="15dp"
+                        app:tint="#A9A9A9"/>
+                </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="80dp">
+
+                <Button
+                    android:id="@+id/button_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Delete Dog"
+                    android:layout_marginTop="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="40dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

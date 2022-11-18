@@ -27,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="24dp"
-                android:text="Bobby"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/poppins_bold"/>
 
@@ -37,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:text="4"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/poppins_bold"/>
 
@@ -50,7 +48,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="14dp"
-            android:text="german shepherd"
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/poppins_bold"/>
 
