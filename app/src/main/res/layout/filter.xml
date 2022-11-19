@@ -15,7 +15,6 @@
         android:layout_marginTop="20dp"
         android:textSize="24sp"/>
 
-
     <com.google.android.material.slider.RangeSlider
         android:id="@+id/slider_ownerage"
         android:layout_width="match_parent"
@@ -27,7 +26,9 @@
         android:backgroundTint="@color/white"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
-        app:values="@array/slider_values_owner"/>
+        app:values="@array/slider_values_owner"
+        android:elevation="8dp"
+        app:labelBehavior="visible"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +50,9 @@
         android:backgroundTint="@color/white"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
-        app:values="@array/slider_values_dog"/>
+        app:values="@array/slider_values_dog"
+        android:elevation="8dp"
+        app:labelBehavior="visible"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,7 +69,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/tv5_dogreg"
-            android:layout_marginHorizontal="30dp">
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv4_dogreg"
@@ -87,16 +91,14 @@
                     android:textColor="@color/black"
                     android:layoutDirection="rtl"
                     android:textAlignment="textStart"
-                    android:layout_gravity="start"/>
+                    android:layout_gravity="start" />
 
             </com.google.android.material.card.MaterialCardView>
-
 
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
-
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv5_dogreg"
@@ -117,11 +119,13 @@
                     android:textColor="@color/black"
                     android:layoutDirection="rtl"
                     android:textAlignment="textStart"
-                    android:layout_gravity="start"/>
+                    android:layout_gravity="start" />
 
 
             </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -131,50 +135,48 @@
         android:layout_marginTop="20dp"
         android:textSize="24sp"/>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/mcv7_dogreg"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="8dp"
-            android:layout_below="@id/tv10_dogreg"
-            android:layout_marginHorizontal="30dp">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv7_dogreg"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginHorizontal="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="10dp">
 
-            <RadioButton
-                android:id="@+id/rb_dogsize1"
-                android:button="@drawable/dog"
-                android:buttonTint="#A9A9A9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
-                android:layout_weight="1"
-                android:checked="true" />
-
-            <RadioButton
-                android:id="@+id/ib_dogsize2"
-                android:button="@drawable/dog"
-                android:buttonTint="#A9A9A9"
-                android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/ib_dogsize1"
+                android:background="@color/white"
+                android:layout_width="110dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/dog"
-                android:scaleX="0.6"
-                android:scaleY="0.6"
+                android:scaleType="fitCenter"
+                android:padding="35dp"
+                app:tint="#A9A9A9"
                 android:layout_weight="1"/>
-
-            <RadioButton
-                android:id="@+id/ib_dogsize3"
-                android:button="@drawable/dog"
-                android:buttonTint="#A9A9A9"
-                android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/ib_dogsize2"
+                android:background="@color/white"
+                android:layout_width="110dp"
                 android:layout_height="match_parent"
-                android:scaleX="0.8"
-                android:scaleY="0.8"
+                android:src="@drawable/dog"
+                android:scaleType="fitCenter"
+                android:padding="25dp"
+                app:tint="#A9A9A9"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:id="@+id/ib_dogsize3"
+                android:background="@color/white"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/dog"
+                android:scaleType="fitCenter"
+                android:padding="15dp"
+                app:tint="#A9A9A9"
                 android:layout_weight="1"/>
         </LinearLayout>
 
