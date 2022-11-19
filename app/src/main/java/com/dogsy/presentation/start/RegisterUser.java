@@ -13,8 +13,8 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dogsy.application.service.ProfileService;
 import com.dogsy.R;
+import com.dogsy.application.service.UserService;
 import com.dogsy.domain.model.User;
 
 import java.io.ByteArrayOutputStream;
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
 public class RegisterUser extends AppCompatActivity {
     //private int userId = 0;
@@ -45,7 +45,7 @@ public class RegisterUser extends AppCompatActivity {
         setContentView(R.layout.register_user);
 
         // TODO: Remove, just for testing.
-        ProfileService.instance.signOut();
+        UserService.instance.signOut();
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -123,9 +123,10 @@ public class RegisterUser extends AppCompatActivity {
             String userPark = et_park.getText().toString();
 
             // passing input data to UserService
-            ProfileService.instance.registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark);
+            // TODO: picture bytearrays must be passed to this function in a List.of(byteArray1, byteArray2, ...)
+            UserService.instance.registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark, List.of(pictureArray3));
 
-            // ProfileService.instance.addDog("Doggo", 44, "MALE", true, "SMALL", "YES", "I am a dog.", Set.of("ACTIVE", "DOMINANT"));
+            // UserService.instance.addDog("Doggo", 44, "MALE", true, "SMALL", "YES", "I am a dog.", Set.of("ACTIVE", "DOMINANT"));
 
             Intent intent = new Intent(getApplicationContext(), RegisterDog.class);
             startActivity(intent);
@@ -151,26 +152,26 @@ public class RegisterUser extends AppCompatActivity {
                     userpic2.setImageURI(selectedImageUri);
                 }
             }
-                else if (requestCode == SELECT_PICTURE3) {
-                    if (null != selectedImageUri) {
-                        ImageButton userpic3 = findViewById(R.id.ib_userpic3);
-                        userpic3.setImageURI(selectedImageUri);
-                        try {
-                            //convert bitmap to byte array to save in db, need to be tested
-                            //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
-                            pictureBitmap3 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            pictureBitmap3.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                            pictureArray3 = stream.toByteArray();
 
-                            //pictureArray3 need to be saved in db as blob, which represents the picture as bytearray
+            else if (requestCode == SELECT_PICTURE3) {
+                if (null != selectedImageUri) {
+                    ImageButton userpic3 = findViewById(R.id.ib_userpic3);
+                    userpic3.setImageURI(selectedImageUri);
+                    try {
+                        //convert bitmap to byte array to save in db, need to be tested
+                        //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                        pictureBitmap3 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        pictureBitmap3.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                        pictureArray3 = stream.toByteArray();
 
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        //pictureArray3 need to be saved in db as blob, which represents the picture as bytearray
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-
             }
         }
     }
+}

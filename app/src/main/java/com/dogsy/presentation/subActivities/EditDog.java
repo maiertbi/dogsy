@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dogsy.R;
 import android.os.Bundle;
 
-public class editDog extends AppCompatActivity {
+public class EditDog extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
