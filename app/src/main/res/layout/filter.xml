@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_corner2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Owner - age"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"/>
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/slider_ownerage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="18"
+        android:valueTo="80"
+        android:stepSize="1"
+        android:background="@drawable/rounded_corner2"
+        android:backgroundTint="@color/white"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        app:values="@array/slider_values_owner"
+        android:elevation="8dp"
+        app:labelBehavior="visible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dog - age"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"/>
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/slider_dogage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        android:valueTo="20"
+        android:stepSize="1"
+        android:background="@drawable/rounded_corner2"
+        android:backgroundTint="@color/white"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        app:values="@array/slider_values_dog"
+        android:elevation="8dp"
+        app:labelBehavior="visible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dog - gender"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll1_dogreg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/tv5_dogreg"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv4_dogreg"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="0dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_weight="5">
+
+                <RadioButton
+                    android:id="@+id/rb_male"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="male"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:layoutDirection="rtl"
+                    android:textAlignment="textStart"
+                    android:layout_gravity="start" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv5_dogreg"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="0dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_weight="5">
+
+                <RadioButton
+                    android:id="@+id/rb_female"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="female"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:layoutDirection="rtl"
+                    android:textAlignment="textStart"
+                    android:layout_gravity="start" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dog - Size"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv7_dogreg"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginHorizontal="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp">
+
+            <ImageButton
+                android:id="@+id/ib_dogsize1"
+                android:background="@color/white"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/dog"
+                android:scaleType="fitCenter"
+                android:padding="35dp"
+                app:tint="#A9A9A9"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:id="@+id/ib_dogsize2"
+                android:background="@color/white"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/dog"
+                android:scaleType="fitCenter"
+                android:padding="25dp"
+                app:tint="#A9A9A9"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:id="@+id/ib_dogsize3"
+                android:background="@color/white"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/dog"
+                android:scaleType="fitCenter"
+                android:padding="15dp"
+                app:tint="#A9A9A9"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
