@@ -5,8 +5,10 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.dogsy.R;
 import com.dogsy.presentation.ChatActivity;
@@ -39,23 +41,39 @@ public class EditProfileActivity extends AppCompatActivity {
         EditUser fragment_edituser = EditUser.newInstance(-1);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frame_layout_edit, fragment_edituser).commit();
+        fragmentManager.beginTransaction().replace(R.id.frame_layout_editprofile, fragment_edituser).commit();
 
 
         btn_editUser.setOnClickListener(view -> {
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_layout_edit, fragment_edituser)
+                    .replace(R.id.frame_layout_editprofile, fragment_edituser)
                     .setReorderingAllowed(true)
                     .addToBackStack("name") //name can be null
                     .commit();
+            View view_owner = findViewById(R.id.view_owner);
+            view_owner.setBackgroundResource(R.color.primaryColor);
+            View view_dog = findViewById(R.id.view_dog);
+            view_dog.setBackgroundResource(R.color.white);
         });
 
         btn_editAllDogs.setOnClickListener(view -> {
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_layout_edit, fragment_allDogs)
+                    .replace(R.id.frame_layout_editprofile, fragment_allDogs)
                     .setReorderingAllowed(true)
                     .addToBackStack("name") //name can be null
                     .commit();
+            View view_owner = findViewById(R.id.view_owner);
+            view_owner.setBackgroundResource(R.color.white);
+            View view_dog = findViewById(R.id.view_dog);
+            view_dog.setBackgroundResource(R.color.primaryColor);
+        });
+
+        ImageButton btn_cancel = findViewById(R.id.button_cancel);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
