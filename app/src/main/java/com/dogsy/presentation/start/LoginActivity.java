@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dogsy.application.service.UserService;
 import com.dogsy.presentation.MatchingActivity;
-import com.dogsy.application.service.ProfileService;
 import com.dogsy.R;
 
 
@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // TODO: Remove next line. This is just for testing.
-        ProfileService.instance.signOut();
+        UserService.instance.signOut();
 
 
         if (getSupportActionBar() != null) {
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            ProfileService.instance.signInUser(email, password);
+            UserService.instance.signInUser(email, password);
 
             // TODO: make intent connection (you have to replace NEW_ACTIVITY)
             Intent intent = new Intent(getApplicationContext(), MatchingActivity.class);

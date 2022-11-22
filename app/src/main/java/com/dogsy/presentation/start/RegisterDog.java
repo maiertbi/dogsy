@@ -9,20 +9,25 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.dogsy.R;
+import com.dogsy.application.service.DogService;
+import com.dogsy.domain.model.Dog;
+
+import java.util.Collections;
+import java.util.Set;
 import com.dogsy.presentation.MatchingActivity;
 import com.dogsy.presentation.fragments.UserDogView;
 
 
 public class RegisterDog extends AppCompatActivity {
 
-    private int dogId;
     private String dogName;
     private int dogAge;
     private String dogBreed;
-    private char dogGender;
+    private Dog.DogGender dogGender;
     private String dogBio;
-    private char dogSize;//s = small; m = medium; l = large
+    private Dog.DogSize dogSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +57,7 @@ public class RegisterDog extends AppCompatActivity {
                 ib_dogsmall.setColorFilter(Color.argb(255, 0, 0, 0));//Hex: #000000
                 ib_dogmedium.setColorFilter(Color.argb(255, 169, 169, 169));//Hex:"#A9A9A9"
                 ib_doglarge.setColorFilter(Color.argb(255, 169, 169, 169));
-                dogSize = 's';
+                dogSize = Dog.DogSize.SMALL;
             }
         });
 
@@ -62,7 +67,7 @@ public class RegisterDog extends AppCompatActivity {
                 ib_dogsmall.setColorFilter(Color.argb(255, 169, 169, 169));
                 ib_dogmedium.setColorFilter(Color.argb(255, 0, 0, 0));
                 ib_doglarge.setColorFilter(Color.argb(255, 169, 169, 169));
-                dogSize = 'm';
+                dogSize = Dog.DogSize.MEDIUM;
             }
         });
 
@@ -72,7 +77,7 @@ public class RegisterDog extends AppCompatActivity {
                 ib_dogsmall.setColorFilter(Color.argb(255, 169, 169, 169));
                 ib_dogmedium.setColorFilter(Color.argb(255, 169, 169, 169));
                 ib_doglarge.setColorFilter(Color.argb(255, 0, 0, 0));
-                dogSize = 'l';
+                dogSize = Dog.DogSize.LARGE;
             }
         });
 
@@ -81,7 +86,7 @@ public class RegisterDog extends AppCompatActivity {
             public void onClick(View v) {
                 if(rb_female.isChecked())
                     rb_female.setChecked(false);
-                dogGender = 'm';
+                dogGender = Dog.DogGender.MALE;
             }
         });
 
@@ -90,7 +95,7 @@ public class RegisterDog extends AppCompatActivity {
             public void onClick(View v) {
                 if(rb_male.isChecked())
                     rb_male.setChecked(false);
-                dogGender = 'f';
+                dogGender = Dog.DogGender.FEMALE;
             }
         });
 
@@ -121,16 +126,27 @@ public class RegisterDog extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dogName = et_dogname.getText().toString();
-                //dogAge = Integer.valueOf(et_dogage.getText().toString());
+                dogAge = Integer.parseInt(et_dogage.getText().toString());
                 dogBreed = et_dogbreed.getText().toString();
                 dogBio = et_dogbio.getText().toString();
 
                 //TODO add dog to db
 
-
+                // Code to add dog to db
+                DogService.instance.addDog(
+                        dogName,
+                        dogAge,
+                        dogGender,
+                        dogSize,
+                        dogBreed,
+                        dogBio,
+                        Set.of(),// TODO: Add Dog personalities
+                        Collections.emptyList() //TODO: Pass dog pictures
+                );
                 Intent swipingScreen = new Intent(RegisterDog.this, MatchingActivity.class);
                 startActivity(swipingScreen);
                 finish();
+
             }
         });
     }

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Dogsy"
         tools:targetApi="31">
         <activity
-            android:name="com.dogsy.presentation.subActivities.editDog"
+            android:name="com.dogsy.presentation.subActivities.EditDog"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -1,10 +1,13 @@
 package com.dogsy.domain.model;
 
 import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.Date;
 import java.util.List;
 
+@IgnoreExtraProperties
 public class User {
     @DocumentId private String id;
     private String firstName;
@@ -14,14 +17,14 @@ public class User {
     private String location;
     private String biography;
     private String park;
-    private List<Dog> dogs;
-    private List<User> likedUsers;
-    // TODO: Add pictures
+    private List<String> dogIds;
+    private List<String> likedUsers;
+    @Exclude private List<byte[]> pictures;
 
     public User() {
     }
 
-    public User(String id, String firstName, Date birthday, Gender gender, String hometown, String location, String biography, String park, List<Dog> dogs, List<User> likedUsers) {
+    public User(String id, String firstName, Date birthday, Gender gender, String hometown, String location, String biography, String park, List<String> dogIds, List<String> likedUsers, List<byte[]> pictures) {
         this.id = id;
         this.firstName = firstName;
         this.birthday = birthday;
@@ -30,8 +33,9 @@ public class User {
         this.location = location;
         this.biography = biography;
         this.park = park;
-        this.dogs = dogs;
+        this.dogIds = dogIds;
         this.likedUsers = likedUsers;
+        this.pictures = pictures;
     }
 
     public String getId() {
@@ -98,20 +102,30 @@ public class User {
         this.park = park;
     }
 
-    public List<Dog> getDogs() {
-        return dogs;
+    public List<String> getDogIds() {
+        return dogIds;
     }
 
-    public void setDogs(List<Dog> dogs) {
-        this.dogs = dogs;
+    public void setDogIds(List<String> dogIds) {
+        this.dogIds = dogIds;
     }
 
-    public List<User> getLikedUsers() {
+    public List<String> getLikedUsers() {
         return likedUsers;
     }
 
-    public void setLikedUsers(List<User> likedUsers) {
+    public void setLikedUsers(List<String> likedUsers) {
         this.likedUsers = likedUsers;
+    }
+
+    @Exclude
+    public List<byte[]> getPictures() {
+        return pictures;
+    }
+
+    @Exclude
+    public void setPictures(List<byte[]> pictures) {
+        this.pictures = pictures;
     }
 
     @Override
@@ -121,31 +135,12 @@ public class User {
 
         User user = (User) o;
 
-        if (!id.equals(user.id)) return false;
-        if (!firstName.equals(user.firstName)) return false;
-        if (!birthday.equals(user.birthday)) return false;
-        if (gender != user.gender) return false;
-        if (!hometown.equals(user.hometown)) return false;
-        if (!location.equals(user.location)) return false;
-        if (!biography.equals(user.biography)) return false;
-        if (!park.equals(user.park)) return false;
-        if (!dogs.equals(user.dogs)) return false;
-        return likedUsers.equals(user.likedUsers);
+        return id.equals(user.id);
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + birthday.hashCode();
-        result = 31 * result + gender.hashCode();
-        result = 31 * result + hometown.hashCode();
-        result = 31 * result + location.hashCode();
-        result = 31 * result + biography.hashCode();
-        result = 31 * result + park.hashCode();
-        result = 31 * result + dogs.hashCode();
-        result = 31 * result + likedUsers.hashCode();
-        return result;
+        return id.hashCode();
     }
 
     @Override
@@ -159,7 +154,7 @@ public class User {
                 ", location='" + location + '\'' +
                 ", biography='" + biography + '\'' +
                 ", park='" + park + '\'' +
-                ", dogs=" + dogs +
+                ", dogs=" + dogIds +
                 ", likedUsers=" + likedUsers +
                 '}';
     }

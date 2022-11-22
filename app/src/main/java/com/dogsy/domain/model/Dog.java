@@ -1,34 +1,36 @@
 package com.dogsy.domain.model;
 
 import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.List;
 
+@IgnoreExtraProperties
 public class Dog {
     @DocumentId private String id;
     private String name;
     private int age;
     private DogGender gender;
-    private boolean isNeutered; // added functionality
     private DogSize size;
     private String breed;
     private String biography;
     private List<Personality> personalities;
-    // TODO: Add pictures
+    @Exclude private List<byte[]> dogPictures;
 
     public Dog() {
     }
 
-    public Dog(String id, String name, int age, DogGender gender, boolean isNeutered, DogSize size, String breed, String biography, List<Personality> personalities) {
+    public Dog(String id, String name, int age, DogGender gender, DogSize size, String breed, String biography, List<Personality> personalities, List<byte[]> dogPictures) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.isNeutered = isNeutered;
         this.size = size;
         this.breed = breed;
         this.biography = biography;
         this.personalities = personalities;
+        this.dogPictures = dogPictures;
     }
 
     public String getId() {
@@ -63,14 +65,6 @@ public class Dog {
         this.gender = gender;
     }
 
-    public boolean isNeutered() {
-        return isNeutered;
-    }
-
-    public void setNeutered(boolean neutered) {
-        isNeutered = neutered;
-    }
-
     public DogSize getSize() {
         return size;
     }
@@ -103,6 +97,14 @@ public class Dog {
         this.personalities = personalities;
     }
 
+    @Exclude public List<byte[]> getDogPictures() {
+        return dogPictures;
+    }
+
+    @Exclude public void setDogPictures(List<byte[]> dogPictures) {
+        this.dogPictures = dogPictures;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,29 +112,12 @@ public class Dog {
 
         Dog dog = (Dog) o;
 
-        if (age != dog.age) return false;
-        if (isNeutered != dog.isNeutered) return false;
-        if (!id.equals(dog.id)) return false;
-        if (!name.equals(dog.name)) return false;
-        if (gender != dog.gender) return false;
-        if (size != dog.size) return false;
-        if (!breed.equals(dog.breed)) return false;
-        if (!biography.equals(dog.biography)) return false;
-        return personalities.equals(dog.personalities);
+        return id.equals(dog.id);
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + age;
-        result = 31 * result + gender.hashCode();
-        result = 31 * result + (isNeutered ? 1 : 0);
-        result = 31 * result + size.hashCode();
-        result = 31 * result + breed.hashCode();
-        result = 31 * result + biography.hashCode();
-        result = 31 * result + personalities.hashCode();
-        return result;
+        return id.hashCode();
     }
 
     @Override
@@ -142,7 +127,6 @@ public class Dog {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", gender=" + gender +
-                ", isNeutered=" + isNeutered +
                 ", size=" + size +
                 ", breed='" + breed + '\'' +
                 ", biography='" + biography + '\'' +

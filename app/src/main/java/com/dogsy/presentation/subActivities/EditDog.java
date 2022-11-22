@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class editDog extends AppCompatActivity {
+public class EditDog extends AppCompatActivity {
 
     private String dogName = "Bobby";
     private String dogAge = "4";
