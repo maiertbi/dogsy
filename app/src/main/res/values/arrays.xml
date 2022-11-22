@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="slider_values_owner">
+    <item>18</item>
+    <item>80</item>
+
+    </array>
+
+    <array name="slider_values_dog">
+        <item>0</item>
+        <item>20</item>
+
+    </array>
+</resources>

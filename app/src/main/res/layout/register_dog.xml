@@ -276,6 +276,11 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_dogpic3"
                 android:layout_width="110dp"
@@ -454,9 +459,9 @@
             android:layout_height="80dp"
             android:layout_below="@+id/tv11_dogreg"
             android:layout_centerInParent="true"
-            android:src="@drawable/plus_square"
             android:background="@null"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/plus_square" />
 
         <LinearLayout
             android:layout_width="match_parent"

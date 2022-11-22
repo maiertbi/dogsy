@@ -16,6 +16,8 @@ import com.dogsy.domain.model.Dog;
 
 import java.util.Collections;
 import java.util.Set;
+import com.dogsy.presentation.MatchingActivity;
+import com.dogsy.presentation.fragments.UserDogView;
 
 
 public class RegisterDog extends AppCompatActivity {
@@ -128,6 +130,7 @@ public class RegisterDog extends AppCompatActivity {
                 dogBreed = et_dogbreed.getText().toString();
                 dogBio = et_dogbio.getText().toString();
 
+                //TODO add dog to db
 
                 // Code to add dog to db
                 DogService.instance.addDog(
@@ -139,14 +142,11 @@ public class RegisterDog extends AppCompatActivity {
                         dogBio,
                         Set.of(),// TODO: Add Dog personalities
                         Collections.emptyList() //TODO: Pass dog pictures
-
                 );
+                Intent swipingScreen = new Intent(RegisterDog.this, MatchingActivity.class);
+                startActivity(swipingScreen);
+                finish();
 
-
-                //
-                //Intent swipingScreen = new Intent(RegisterDog.this, swipingScreen.class);
-                //startActivity(swiping Screen);
-                //finish();
             }
         });
     }

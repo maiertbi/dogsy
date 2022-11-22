@@ -1,39 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.subActivities.EditProfileActivity">
 
-
-
-
-    <Button
-        android:id="@+id/button_editUser"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl_headline"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="5dp">
 
-    <Button
-        android:id="@+id/button_editAllDogs"
-        android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/button_cancel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/next"
+            app:tint="@color/primaryColor"
+            android:rotation="180"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_bold"
+            android:text="edit profile"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_fragments"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/rl_headline"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_editUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="bottom|center"
+            android:text="owner"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/button_editAllDogs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_bold"
+            android:text="dog"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_views"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_fragments"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp">
+
+        <View
+            android:id="@+id/view_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:background="@color/primaryColor" />
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"/>
+        <View
+            android:id="@+id/view_dog"
+            android:layout_height="4dp"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"/>
+    </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/frame_layout_edit"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_editUser" />
+        android:id="@+id/frame_layout_editprofile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_views"
+        android:layout_above="@+id/bottomNavigationView">
 
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -44,5 +111,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
         app:labelVisibilityMode="unlabeled"
+        android:layout_alignParentBottom="true"
         />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
