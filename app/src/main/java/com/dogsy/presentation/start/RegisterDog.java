@@ -101,8 +101,8 @@ public class RegisterDog extends AppCompatActivity {
                     et_dogbreed.getText().toString(),
                     et_dogbio.getText().toString());
 
-            Intent registerDog = new Intent(RegisterDog.this, RegisterDog.class);
-            startActivity(registerDog);
+            Intent intent = new Intent(RegisterDog.this, RegisterDog.class);
+            startActivity(intent);
             finish();
         });
 
@@ -115,8 +115,8 @@ public class RegisterDog extends AppCompatActivity {
                     et_dogbreed.getText().toString(),
                     et_dogbio.getText().toString());
 
-            Intent swipingScreen = new Intent(RegisterDog.this, MatchingActivity.class);
-            startActivity(swipingScreen);
+            Intent intent = new Intent(RegisterDog.this, MatchingActivity.class);
+            startActivity(intent);
             finish();
         });
     }
