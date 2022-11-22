@@ -92,18 +92,46 @@
             app:shapeAppearanceOverlay="@style/rounded_corner" />
         <!-- USER VIEW ENDS HERE -->
 
+        <!-- DOG VIEW STARTS HERE -->
         <FrameLayout
             android:id="@+id/frame_layout_dog1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp">
-
         </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/frame_layout_dog2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
+        </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/frame_layout_dog3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
+        </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/frame_layout_dog4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
+        </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/frame_layout_dog5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
+        </FrameLayout>
     </LinearLayout>
 </ScrollView>
 
