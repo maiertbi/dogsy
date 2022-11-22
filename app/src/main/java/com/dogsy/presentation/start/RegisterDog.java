@@ -36,7 +36,9 @@ public class RegisterDog extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-        
+
+        ImageButton ibAddDog = findViewById(R.id.ib_adddog);
+
         EditText et_dogname = findViewById(R.id.et_dogname);
         EditText et_dogage = findViewById(R.id.et_age);
         EditText et_dogbreed = findViewById(R.id.et_breed);
@@ -91,8 +93,7 @@ public class RegisterDog extends AppCompatActivity {
         });
 
 
-        //on add more dogs button click
-        ImageButton ibAddDog = findViewById(R.id.ib_adddog);
+        // for adding another dog
         ibAddDog.setOnClickListener(view -> {
 
             addDog(et_dogname.getText().toString(),
