@@ -123,6 +123,7 @@ public class RegisterDog extends AppCompatActivity {
 
     private void addDog(String dogName, Integer dogAge, String dogBreed, String dogBio) {
         // TODO: DB - add dog to db - userID missing?
+        //  error handling if someting is wrong or missing? (could be ignored theoretically...)
         // Code to add dog to db
         DogService.instance.addDog(
                 dogName,

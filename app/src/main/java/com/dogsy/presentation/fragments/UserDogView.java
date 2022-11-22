@@ -18,6 +18,7 @@ public class UserDogView extends Fragment {
     public UserDogView() {
     }
 
+    // TODO: DB - create params so the userID gets called
     public static UserDogView newInstance(Integer userId) {
         UserDogView fragment = new UserDogView();
         Bundle args = new Bundle();
@@ -32,6 +33,8 @@ public class UserDogView extends Fragment {
         if (getArguments() != null) {
             userId = getArguments().getInt(ARG_PARAM1, -1);
         }
+
+        // TODO: DB - get all textviews, imageviews etc from .xml and change them to the ones from the actual user
     }
 
     @Override

@@ -25,12 +25,12 @@
 
     <ImageButton
         android:id="@+id/button_like"
-        android:contentDescription="@string/like"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="500dp"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/like"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/frame_layout_matching"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,12 +40,12 @@
 
     <ImageButton
         android:id="@+id/button_dislike"
-        android:contentDescription="@string/dislike"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="500dp"
         android:layout_marginEnd="140dp"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/dislike"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/frame_layout_matching"
         app:layout_constraintEnd_toEndOf="@+id/frame_layout_matching"
