@@ -56,11 +56,9 @@ public class MatchingActivity extends AppCompatActivity {
         View toolbarView = findViewById(R.id.include);
         ImageButton btn_filter = toolbarView.findViewById(R.id.hamburger);
 
-
         // TODO: DB - add user id of new user (who can be liked/disliked) as params to .newInstance();
         UserDogView fragment = UserDogView.newInstance(-1);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_matching, fragment).commit();
-
 
         btn_like.setOnClickListener(view -> {
             //TODO: DB - call new Fragment with new User
@@ -167,8 +165,10 @@ public class MatchingActivity extends AppCompatActivity {
                         ownerAgeValues = rl_ownerage.getValues();//min and max value from range slider for owner age
                         dogAgeValues = rl_dogage.getValues();//min and max value from range slider for dog age
 
-                        // TODO: DB get new fragment of user which matches the criteria
-                        //  reload Fragment
+                        //TODO: DB - call new Fragment with new User
+                        UserDogView newFragment = UserDogView.newInstance(-1);
+                        getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
+
                         dialog.cancel();
                     }
             );
