@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,7 +14,7 @@ import com.dogsy.presentation.ChatActivity;
 import com.dogsy.presentation.MatchingActivity;
 import com.dogsy.presentation.ProfileActivity;
 import com.dogsy.presentation.fragments.EditAllDogs;
-import com.dogsy.presentation.fragments.EditUser;
+import com.dogsy.presentation.fragments.EditOwner;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -37,23 +36,27 @@ public class EditProfileActivity extends AppCompatActivity {
         Button btn_editUser = findViewById(R.id.button_editUser);
         Button btn_editAllDogs = findViewById(R.id.button_editAllDogs);
 
+        View ownerUnderline = findViewById(R.id.view_owner);
+        View dogUnderline = findViewById(R.id.view_dog);
+
+        // TODO: DB - insert param for list of all dogs
         EditAllDogs fragment_allDogs = EditAllDogs.newInstance(-1);
-        EditUser fragment_edituser = EditUser.newInstance(-1);
+
+        // TODO: DB - insert param for user data
+        EditOwner fragmentEdituser = EditOwner.newInstance(-1);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frame_layout_editprofile, fragment_edituser).commit();
+        fragmentManager.beginTransaction().replace(R.id.frame_layout_editprofile, fragmentEdituser).commit();
 
 
         btn_editUser.setOnClickListener(view -> {
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_layout_editprofile, fragment_edituser)
+                    .replace(R.id.frame_layout_editprofile, fragmentEdituser)
                     .setReorderingAllowed(true)
                     .addToBackStack("name") //name can be null
                     .commit();
-            View view_owner = findViewById(R.id.view_owner);
-            view_owner.setBackgroundResource(R.color.primaryColor);
-            View view_dog = findViewById(R.id.view_dog);
-            view_dog.setBackgroundResource(R.color.white);
+            ownerUnderline.setBackgroundResource(R.color.primaryColor);
+            dogUnderline.setBackgroundResource(R.color.white);
         });
 
         btn_editAllDogs.setOnClickListener(view -> {
@@ -62,19 +65,12 @@ public class EditProfileActivity extends AppCompatActivity {
                     .setReorderingAllowed(true)
                     .addToBackStack("name") //name can be null
                     .commit();
-            View view_owner = findViewById(R.id.view_owner);
-            view_owner.setBackgroundResource(R.color.white);
-            View view_dog = findViewById(R.id.view_dog);
-            view_dog.setBackgroundResource(R.color.primaryColor);
+            ownerUnderline.setBackgroundResource(R.color.white);
+            dogUnderline.setBackgroundResource(R.color.primaryColor);
         });
 
         ImageButton btn_cancel = findViewById(R.id.button_cancel);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        btn_cancel.setOnClickListener(v -> finish());
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId())

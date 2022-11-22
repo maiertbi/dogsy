@@ -2,13 +2,10 @@ package com.dogsy.presentation.fragments;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +15,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dogsy.R;
-import com.dogsy.presentation.start.RegisterMail;
-import com.dogsy.presentation.start.RegisterUser;
 import com.dogsy.presentation.start.StartScreen;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-public class EditUser extends Fragment implements View.OnClickListener {
+public class EditOwner extends Fragment implements View.OnClickListener {
 
     private static final String USER_ID = "userId";
 
@@ -49,12 +41,12 @@ public class EditUser extends Fragment implements View.OnClickListener {
 
     private Integer userId;
 
-    public EditUser() {
+    public EditOwner() {
         // Required empty public constructor
     }
 
-    public static EditUser newInstance(Integer userId) {
-        EditUser fragment = new EditUser();
+    public static EditOwner newInstance(Integer userId) {
+        EditOwner fragment = new EditOwner();
         Bundle args = new Bundle();
         args.putInt(USER_ID, userId);
         fragment.setArguments(args);

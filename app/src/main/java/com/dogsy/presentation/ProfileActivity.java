@@ -26,19 +26,19 @@ public class ProfileActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
+        // TODO: DB - add current user to fragment as param
         UserDogView fragment = UserDogView.newInstance(-1);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_profile, fragment).commit();
 
         Button btn_editProfile = findViewById(R.id.button_edit_profile);
-        btn_editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent editProfile = new  Intent(getApplicationContext(), EditProfileActivity.class);
-                startActivity(editProfile);
-            }
+        btn_editProfile.setOnClickListener(v -> {
+            // TODO: DB - pass current userID or just call it in EditProfileActivity?
+            Intent intent = new  Intent(getApplicationContext(), EditProfileActivity.class);
+            startActivity(intent);
         });
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
