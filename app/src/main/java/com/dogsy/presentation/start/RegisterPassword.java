@@ -30,16 +30,19 @@ public class RegisterPassword extends AppCompatActivity {
             String userPassword1 = et1.getText().toString();
             String userPassword2 = et2.getText().toString();
 
-            // TODO: add regex check to the if clause (https://www.w3schools.com/java/java_regex.asp)
+            // TODO: FABIAN - add regex-check to the if clause (https://www.w3schools.com/java/java_regex.asp)
             if(!(userPassword1.equals(userPassword2)) || userPassword1.isEmpty()){
                 tv1.setText("Please enter valid and matching passwords.");
                 return;
             }
 
-            Intent registerUser = new Intent(getApplicationContext(), RegisterUser.class);
-            registerUser.putExtra("mail", getIntent().getStringExtra("mail"));
-            registerUser.putExtra("password", userPassword1);
-            startActivity(registerUser);
+            Intent intent = new Intent(getApplicationContext(), RegisterUser.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("mail", getIntent().getStringExtra("mail"));
+            bundle.putString("password", userPassword1);
+
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
     }
 }

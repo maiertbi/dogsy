@@ -14,20 +14,17 @@ import com.dogsy.R;
 
 
 public class LoginActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-
-        // TODO: Remove next line. This is just for testing.
-        UserService.instance.signOut();
-
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        // TODO: DB - Remove next line. This is just for testing.
+        UserService.instance.signOut();
 
         ImageButton ib = findViewById(R.id.ib_signin);
         EditText et_email = findViewById(R.id.et_loginEmail);
@@ -38,21 +35,15 @@ public class LoginActivity extends AppCompatActivity {
             String email = et_email.getText().toString();
             String password = et_password.getText().toString();
 
-
             if(email.isEmpty() || password.isEmpty()) {
                 tryAgain.setText("Please enter your email and password.");
                 return;
             }
 
             UserService.instance.signInUser(email, password);
+            // TODO: DB - error handling ("Wrong user or password")
 
-            // TODO: make intent connection (you have to replace NEW_ACTIVITY)
-            Intent intent = new Intent(getApplicationContext(), MatchingActivity.class);
-            // intent.putExtra("mail", email);
-            // intent.putExtra("password", password);
-
-            startActivity(intent);
-
+            startActivity(new Intent(getApplicationContext(), MatchingActivity.class));
         });
     }
 }

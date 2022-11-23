@@ -11,12 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dogsy.R;
 
 public class RegisterMail extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_mail);
-
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -29,9 +27,9 @@ public class RegisterMail extends AppCompatActivity {
         ib.setOnClickListener(view -> {
             String userMail = et.getText().toString();
 
-            // TODO: add regex check to the if clause (https://www.w3schools.com/java/java_regex.asp)
+            // TODO: FABIAN - add regex-check to the if clause (https://www.w3schools.com/java/java_regex.asp)
             if (userMail.isEmpty()) {
-                // TODO: change text-appeareance (color, position) to make it look like LoginActivity.java
+                // TODO: FABIAN - change text-appeareance (color, position) to make it look like LoginActivity.java
                 tv.setText("Please enter a correct email");
                 return;
             }
@@ -39,11 +37,6 @@ public class RegisterMail extends AppCompatActivity {
             Intent passwordScreen = new Intent(getApplicationContext(), RegisterPassword.class);
             passwordScreen.putExtra("mail", userMail);
             startActivity(passwordScreen);
-
-
         });
-
-
-
     }
 }

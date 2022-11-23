@@ -2,13 +2,10 @@ package com.dogsy.presentation.fragments;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,19 +15,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dogsy.R;
-import com.dogsy.presentation.start.RegisterMail;
-import com.dogsy.presentation.start.RegisterUser;
+import com.dogsy.presentation.ProfileActivity;
 import com.dogsy.presentation.start.StartScreen;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-public class EditUser extends Fragment implements View.OnClickListener {
+public class EditOwner extends Fragment implements View.OnClickListener {
 
     private static final String USER_ID = "userId";
 
-    // TODO set variables from current user from db
+    // TODO: DB - delete the sample data (David, 16.03.2001, ...)
     // gender and dob is not editable
+    private Integer userId;
     private String userName = "David";
     private String userDob = "16.03.2001";
     private String userGender = "male";
@@ -47,14 +41,13 @@ public class EditUser extends Fragment implements View.OnClickListener {
     int SELECT_PICTURE2 = 200;
     int SELECT_PICTURE3 = 300;
 
-    private Integer userId;
 
-    public EditUser() {
-        // Required empty public constructor
+    public EditOwner() {
     }
 
-    public static EditUser newInstance(Integer userId) {
-        EditUser fragment = new EditUser();
+    // TODO - change params so the userID gets called
+    public static EditOwner newInstance(Integer userId) {
+        EditOwner fragment = new EditOwner();
         Bundle args = new Bundle();
         args.putInt(USER_ID, userId);
         fragment.setArguments(args);
@@ -67,25 +60,27 @@ public class EditUser extends Fragment implements View.OnClickListener {
         if (getArguments() != null) {
             userId = getArguments().getInt(USER_ID);
         }
+
+        // TODO: DB - get User and save it to variables
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_edit_user, container, false);
+        view = inflater.inflate(R.layout.fragment_edit_owner, container, false);
 
         Button btn_apply = view.findViewById(R.id.button_apply);
-        btn_apply.setOnClickListener(this);
         Button btn_logout = view.findViewById(R.id.button_logout);
-        btn_logout.setOnClickListener(this);
         Button btn_delete = view.findViewById(R.id.button_delete);
+        btn_apply.setOnClickListener(this);
+        btn_logout.setOnClickListener(this);
         btn_delete.setOnClickListener(this);
 
         ImageButton ib_pic1 = view.findViewById(R.id.ib_userpic1);
-        ib_pic1.setOnClickListener(this);
         ImageButton ib_pic2 = view.findViewById(R.id.ib_userpic2);
-        ib_pic2.setOnClickListener(this);
         ImageButton ib_pic3 = view.findViewById(R.id.ib_userpic3);
+        ib_pic1.setOnClickListener(this);
+        ib_pic2.setOnClickListener(this);
         ib_pic3.setOnClickListener(this);
 
         EditText text_name = view.findViewById(R.id.et_name);
@@ -95,7 +90,6 @@ public class EditUser extends Fragment implements View.OnClickListener {
         EditText text_hometown = view.findViewById(R.id.et_hometown);
         EditText text_country = view.findViewById(R.id.et_country);
 
-        //TODO set images from user
         text_name.setText(userName);
         text_dob.setText(userDob);
         text_gender.setText(userGender);
@@ -103,11 +97,16 @@ public class EditUser extends Fragment implements View.OnClickListener {
         text_hometown.setText(userHometown);
         text_country.setText(userCountry);
 
+        // TODO: DB - set the already existing images
+
+        // TODO: FABIAN - make the pictures changable!
+
         return view;
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent = null;
         switch (v.getId()){
             case R.id.button_apply:
                 EditText text_name = view.findViewById(R.id.et_name);
@@ -118,18 +117,22 @@ public class EditUser extends Fragment implements View.OnClickListener {
                 userHometown = text_hometown.getText().toString();
                 EditText text_country = view.findViewById(R.id.et_country);
                 userCountry = text_country.getText().toString();
-                //TODO update users data in db
+
+                // TODO: FABIAN - get the new and changed pictures!
+
+                // TODO: DB - update users data in db
+                intent = new Intent(getActivity(), ProfileActivity.class);
                 break;
             case R.id.button_logout:
-                //TODO you can go back to the profile screen after logging out
-                Intent startScreen = new Intent(getActivity(), StartScreen.class);
-                startActivity(startScreen);
-                getActivity().finish();
+                // TODO: DB - log out User
+                intent = new Intent(getActivity(), StartScreen.class);
                 break;
             case R.id.button_delete:
-                //TODO delete profile and intent to login screen
+                // TODO: DB - delete user
+                // intent = new Intent(getActivity(), StartScreen.class);
                 break;
         }
+        startActivity(intent);
+        getActivity().finish();
     }
-
 }

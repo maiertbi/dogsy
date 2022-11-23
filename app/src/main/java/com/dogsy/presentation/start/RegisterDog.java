@@ -21,7 +21,6 @@ import com.dogsy.presentation.fragments.UserDogView;
 
 
 public class RegisterDog extends AppCompatActivity {
-
     private String dogName;
     private int dogAge;
     private String dogBreed;
@@ -37,117 +36,104 @@ public class RegisterDog extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-        EditText et_dogname = (EditText) findViewById(R.id.et_dogname);
-        EditText et_dogage = (EditText) findViewById(R.id.et_age);
-        EditText et_dogbreed = (EditText) findViewById(R.id.et_breed);
-        EditText et_dogbio = (EditText) findViewById(R.id.et_bio);
-        ImageButton ib_dogPic1 = (ImageButton) findViewById(R.id.ib_dogpic1);
-        ImageButton ib_dogPic2 = (ImageButton) findViewById(R.id.ib_dogpic2);
-        ImageButton ib_dogPic3 = (ImageButton) findViewById(R.id.ib_dogpic3);
-        ImageButton ib_dogsmall = (ImageButton) findViewById(R.id.ib_dogsize1);
-        ImageButton ib_dogmedium = (ImageButton) findViewById(R.id.ib_dogsize2);
-        ImageButton ib_doglarge = (ImageButton) findViewById(R.id.ib_dogsize3);
+
+        ImageButton ibAddDog = findViewById(R.id.ib_adddog);
+
+        EditText et_dogname = findViewById(R.id.et_dogname);
+        EditText et_dogage = findViewById(R.id.et_age);
+        EditText et_dogbreed = findViewById(R.id.et_breed);
+        EditText et_dogbio = findViewById(R.id.et_bio);
+        
+        ImageButton ib_dogPic1 = findViewById(R.id.ib_dogpic1);
+        ImageButton ib_dogPic2 = findViewById(R.id.ib_dogpic2);
+        ImageButton ib_dogPic3 = findViewById(R.id.ib_dogpic3);
+        
+        ImageButton ib_dogsmall = findViewById(R.id.ib_dogsize1);
+        ImageButton ib_dogmedium = findViewById(R.id.ib_dogsize2);
+        ImageButton ib_doglarge = findViewById(R.id.ib_dogsize3);
+        
         RadioButton rb_male = findViewById(R.id.rb_male);
         RadioButton rb_female = findViewById(R.id.rb_female);
 
+        int colorSelected = Color.argb(255, 0, 0, 0); // #000000
+        int colorUnselected = Color.argb(255, 169, 169, 169); // #A9A9A9
+
         //define dogsize, change image tints
-        ib_dogsmall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ib_dogsmall.setColorFilter(Color.argb(255, 0, 0, 0));//Hex: #000000
-                ib_dogmedium.setColorFilter(Color.argb(255, 169, 169, 169));//Hex:"#A9A9A9"
-                ib_doglarge.setColorFilter(Color.argb(255, 169, 169, 169));
-                dogSize = Dog.DogSize.SMALL;
-            }
+        ib_dogsmall.setOnClickListener(view -> {
+            ib_dogsmall.setColorFilter(colorSelected);
+            ib_dogmedium.setColorFilter(colorUnselected);
+            ib_doglarge.setColorFilter(colorUnselected);
+            dogSize = Dog.DogSize.SMALL;
         });
 
-        ib_dogmedium.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                ib_dogsmall.setColorFilter(Color.argb(255, 169, 169, 169));
-                ib_dogmedium.setColorFilter(Color.argb(255, 0, 0, 0));
-                ib_doglarge.setColorFilter(Color.argb(255, 169, 169, 169));
-                dogSize = Dog.DogSize.MEDIUM;
-            }
+        ib_dogmedium.setOnClickListener(view -> {
+            ib_dogsmall.setColorFilter(colorUnselected);
+            ib_dogmedium.setColorFilter(colorSelected);
+            ib_doglarge.setColorFilter(colorUnselected);
+            dogSize = Dog.DogSize.MEDIUM;
         });
 
-        ib_doglarge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ib_dogsmall.setColorFilter(Color.argb(255, 169, 169, 169));
-                ib_dogmedium.setColorFilter(Color.argb(255, 169, 169, 169));
-                ib_doglarge.setColorFilter(Color.argb(255, 0, 0, 0));
-                dogSize = Dog.DogSize.LARGE;
-            }
+        ib_doglarge.setOnClickListener(view -> {
+            ib_dogsmall.setColorFilter(colorUnselected);
+            ib_dogmedium.setColorFilter(colorUnselected);
+            ib_doglarge.setColorFilter(colorSelected);
+            dogSize = Dog.DogSize.LARGE;
         });
 
-        rb_male.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(rb_female.isChecked())
-                    rb_female.setChecked(false);
-                dogGender = Dog.DogGender.MALE;
-            }
+        rb_male.setOnClickListener(v -> {
+            if(rb_female.isChecked())
+                rb_female.setChecked(false);
+            dogGender = Dog.DogGender.MALE;
         });
 
-        rb_female.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(rb_male.isChecked())
-                    rb_male.setChecked(false);
-                dogGender = Dog.DogGender.FEMALE;
-            }
+        rb_female.setOnClickListener(v -> {
+            if(rb_male.isChecked())
+                rb_male.setChecked(false);
+            dogGender = Dog.DogGender.FEMALE;
         });
 
 
-        //on add more dogs button click
-        ImageButton ibAddDog = (ImageButton) findViewById(R.id.ib_adddog);
-        ibAddDog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dogName = et_dogname.getText().toString();
-                //dogAge = Integer.valueOf(et_dogage.getText().toString());
-                dogBreed = et_dogbreed.getText().toString();
+        // for adding another dog
+        ibAddDog.setOnClickListener(view -> {
 
-                dogBio = et_dogbio.getText().toString();
-                /*
-                Code to add dog to db
-                 */
-                Intent registerDog = new Intent(RegisterDog.this, RegisterDog.class);
-                startActivity(registerDog);
-                finish();
-            }
+            addDog(et_dogname.getText().toString(),
+                    Integer.parseInt(et_dogage.getText().toString()),
+                    et_dogbreed.getText().toString(),
+                    et_dogbio.getText().toString());
+
+            Intent intent = new Intent(RegisterDog.this, RegisterDog.class);
+            startActivity(intent);
+            finish();
         });
 
         //Finish process and continue to app
-        ImageButton ibSubmit = (ImageButton) findViewById(R.id.ib_submit);
-        ibSubmit.setOnClickListener(new View.OnClickListener() {
+        ImageButton ibSubmit = findViewById(R.id.ib_submit);
+        ibSubmit.setOnClickListener(view -> {
 
-            @Override
-            public void onClick(View view) {
-                dogName = et_dogname.getText().toString();
-                dogAge = Integer.parseInt(et_dogage.getText().toString());
-                dogBreed = et_dogbreed.getText().toString();
-                dogBio = et_dogbio.getText().toString();
+            addDog(et_dogname.getText().toString(),
+                    Integer.parseInt(et_dogage.getText().toString()),
+                    et_dogbreed.getText().toString(),
+                    et_dogbio.getText().toString());
 
-                //TODO add dog to db
-
-                // Code to add dog to db
-                DogService.instance.addDog(
-                        dogName,
-                        dogAge,
-                        dogGender,
-                        dogSize,
-                        dogBreed,
-                        dogBio,
-                        Set.of(),// TODO: Add Dog personalities
-                        Collections.emptyList() //TODO: Pass dog pictures
-                );
-                Intent swipingScreen = new Intent(RegisterDog.this, MatchingActivity.class);
-                startActivity(swipingScreen);
-                finish();
-
-            }
+            Intent intent = new Intent(RegisterDog.this, MatchingActivity.class);
+            startActivity(intent);
+            finish();
         });
+    }
+
+    private void addDog(String dogName, Integer dogAge, String dogBreed, String dogBio) {
+        // TODO: DB - add dog to db - userID missing?
+        //  error handling if someting is wrong or missing? (could be ignored theoretically...)
+        // Code to add dog to db
+        DogService.instance.addDog(
+                dogName,
+                dogAge,
+                dogGender,
+                dogSize,
+                dogBreed,
+                dogBio,
+                Set.of(),// TODO: Add Dog personalities
+                Collections.emptyList() //TODO: Pass dog pictures
+        );
     }
 }

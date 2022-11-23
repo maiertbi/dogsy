@@ -8,19 +8,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="20dp">
+        android:orientation="vertical">
 
-        <!-- USER VIEW STARTS HERE -->
+        <!-- DOG VIEW STARTS HERE -->
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image_user_1"
+            android:id="@+id/image_dog_1"
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:layout_marginBottom="20dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@mipmap/sample_user"
+            android:src="@mipmap/sample_dog"
             app:shapeAppearanceOverlay="@style/rounded_corner"
             />
 
@@ -30,108 +28,80 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/text_user_name"
+                android:id="@+id/text_dog_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_family"
                 android:maxLength="10"
-                android:text="Sophia"
+                android:text="Fluffy"
                 android:textSize="48sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/text_user_age"
+                android:id="@+id/text_dog_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_family"
-                android:text="21"
+                android:text="2"
                 android:textSize="24sp" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/text_user_distance"
+            android:id="@+id/text_dog_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="xx km distance"
+            android:background="@drawable/rounded_corner"
+            android:padding="15dp"
+            android:text="Loves to play with his friends"
             android:textSize="20sp"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"/>
 
         <TextView
-            android:id="@+id/text_user_description"
+            android:id="@+id/text_dog_breed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:padding="15dp"
+            android:text="small terrier | male"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_dog_2"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginBottom="20dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/sample_dog"
+            app:shapeAppearanceOverlay="@style/rounded_corner"
+            />
+
+        <TextView
+            android:id="@+id/text_dog_personality"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/rounded_corner2"
             android:padding="15dp"
-            android:text="This is a long description. This is a long description. This is a long description. This is a long description. This is a long description. This is a long description."
-            android:textColorHighlight="#E8EEBF"
+            android:text="Personality View still missing.\nPersonality View still missing.\nPersonality View still missing."
             android:textSize="20sp" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image_user_2"
+            android:id="@+id/image_dog_3"
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:layout_marginBottom="20dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@mipmap/sample_user"
+            android:src="@mipmap/sample_dog"
             app:shapeAppearanceOverlay="@style/rounded_corner"
-            tools:ignore="ImageContrastCheck" />
+            />
+    <!-- DOG VIEW ENDS HERE -->
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image_user_3"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginBottom="20dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/sample_user"
-            app:shapeAppearanceOverlay="@style/rounded_corner" />
-        <!-- USER VIEW ENDS HERE -->
-
-        <!-- DOG VIEW STARTS HERE -->
-        <FrameLayout
-            android:id="@+id/frame_layout_dog1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frame_layout_dog2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frame_layout_dog3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frame_layout_dog4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frame_layout_dog5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
-        </FrameLayout>
     </LinearLayout>
 </ScrollView>
 
