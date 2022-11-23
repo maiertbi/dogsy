@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.dogsy.presentation.fragments.UserDogView">
     <LinearLayout
+        android:paddingTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -16,8 +17,8 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_user_1"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginBottom="20dp"
+            android:layout_height="450dp"
+            android:layout_marginBottom="10dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@mipmap/sample_user"

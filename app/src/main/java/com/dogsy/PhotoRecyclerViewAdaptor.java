@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PhotoRecyclerViewAdaptor extends RecyclerView.Adapter<PhotoRecyclerViewAdaptor.ViewHolder> {
-    private ArrayList<PhotoItem> mData = null;
+    private final ArrayList<PhotoItem> mData;
 
     public PhotoRecyclerViewAdaptor(ArrayList<PhotoItem> data) {
         mData = data;
@@ -30,12 +30,10 @@ public class PhotoRecyclerViewAdaptor extends RecyclerView.Adapter<PhotoRecycler
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = inflater.inflate(R.layout.item_photo, parent, false);
-        PhotoRecyclerViewAdaptor.ViewHolder vh = new PhotoRecyclerViewAdaptor.ViewHolder(view);
 
-        return vh;
+        return new ViewHolder(view);
     }
 
-    // onBindViewHolder : position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PhotoItem item = mData.get(position);
@@ -54,7 +52,7 @@ public class PhotoRecyclerViewAdaptor extends RecyclerView.Adapter<PhotoRecycler
     }
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
 
         ViewHolder(View itemView) {
