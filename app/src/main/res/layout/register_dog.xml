@@ -367,12 +367,108 @@
             android:id="@id/ll4_dogreg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ll3_dogreg">
-            <EditText
+            android:layout_below="@id/ll3_dogreg"
+            android:orientation="vertical">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="work in progress"
-                android:textSize="30dp"/>
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_patient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner"
+                    android:button="@null"
+                    android:padding="10dp"
+                    android:text="patient"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_playful"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:text="playful"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="false"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_active"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:text="active"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="false"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_dominant"
+                    android:button="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner"
+                    android:text="dominant"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:textAllCaps="false"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_kidfriendly"
+                    android:button="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner"
+                    android:text="kid-friendly"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_affectionate"
+                    android:button="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner"
+                    android:text="affectionate"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:textAllCaps="false"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_courageous"
+                    android:button="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner"
+                    android:text="courageous"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
         </LinearLayout>
 
         <TextView

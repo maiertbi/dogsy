@@ -61,48 +61,14 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/text_ureg_lastname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_below="@+id/mcv1"
-            android:layout_marginHorizontal="10dp"
-            android:text="Last name"
-            android:textSize="24sp"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="20dp"/>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/mcv_ureg_lastname"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/text_ureg_lastname"
-            android:layout_marginTop="0dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="8dp">
 
-            <EditText
-                android:inputType="text"
-                android:id="@+id/et_ureg_lastname"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="24sp"
-                android:autofillHints="name"
-                android:hint="Last name"
-                android:layout_marginHorizontal="10dp"
-                android:fontFamily="@font/poppins_regular"
-                android:background="@null"
-                android:maxLines="1"
-                android:singleLine="true"/>
-
-        </com.google.android.material.card.MaterialCardView>
         <TextView
             android:id="@+id/t3_ureg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:layout_below="@+id/mcv_ureg_lastname"
+            android:layout_below="@+id/mcv1"
             android:layout_marginHorizontal="10dp"
             android:text="Birthday"
             android:textSize="24sp"
@@ -396,7 +362,7 @@
             android:textSize="24sp"
             android:layout_below="@id/mcv7"
             android:layout_marginTop="20dp"
-            android:text="Country"
+            android:text="Location"
             android:layout_marginHorizontal="10dp"
             />
         <com.google.android.material.card.MaterialCardView
@@ -409,13 +375,13 @@
             app:cardElevation="8dp">
 
             <EditText
-                android:id="@+id/et_usercountry"
+                android:id="@+id/et_userlocation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="24sp"
                 android:autofillHints=""
                 android:inputType="text"
-                android:hint="Enter country"
+                android:hint="Enter location"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:background="@null"
@@ -433,7 +399,7 @@
             android:textSize="24sp"
             android:layout_below="@id/mcv8"
             android:layout_marginTop="20dp"
-            android:text="Phone number"
+            android:text="Park"
             android:layout_marginHorizontal="10dp"
             />
         <com.google.android.material.card.MaterialCardView
@@ -446,11 +412,11 @@
             app:cardElevation="8dp">
 
             <EditText
-                android:id="@+id/et_userphone"
+                android:id="@+id/et_userpark"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="24sp"
-                android:hint="Enter phone number"
+                android:hint="Enter park"
                 android:autofillHints=""
                 android:inputType="text"
                 android:layout_marginHorizontal="10dp"

@@ -2,6 +2,7 @@ package com.dogsy.presentation.start;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -65,8 +66,8 @@ public class RegisterUser extends AppCompatActivity {
         ImageButton ib_userPic3 = findViewById(R.id.ib_userpic3);
         EditText et_bio = findViewById(R.id.et_userbio);
         EditText et_hometown = findViewById(R.id.et_userhometown);
-        EditText et_location = findViewById(R.id.et_usercountry);
-        EditText et_park = findViewById(R.id.et_userphone);
+        EditText et_location = findViewById(R.id.et_userlocation);
+        EditText et_park = findViewById(R.id.et_userpark);
 
         //set spinner values
         Spinner gender = findViewById(R.id.s_gender);
@@ -138,9 +139,33 @@ public class RegisterUser extends AppCompatActivity {
         if (requestCode == SELECT_PICTURE1) {
             ImageButton userpic1 = findViewById(R.id.ib_userpic1);
             userpic1.setImageURI(selectedImageUri);
+            try {
+                //convert bitmap to byte array to save in db, need to be tested
+                //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                pictureBitmap1 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pictureBitmap1.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                pictureArray1 = stream.toByteArray();
+
+                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (requestCode == SELECT_PICTURE2) {
             ImageButton userpic2 = findViewById(R.id.ib_userpic2);
             userpic2.setImageURI(selectedImageUri);
+            try {
+                //convert bitmap to byte array to save in db, need to be tested
+                //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                pictureBitmap2 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pictureBitmap2.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                pictureArray2 = stream.toByteArray();
+
+                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (requestCode == SELECT_PICTURE3) {
             ImageButton userpic3 = findViewById(R.id.ib_userpic3);
             userpic3.setImageURI(selectedImageUri);

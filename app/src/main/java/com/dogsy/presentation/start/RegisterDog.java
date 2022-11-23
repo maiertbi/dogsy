@@ -1,8 +1,11 @@
 package com.dogsy.presentation.start;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,6 +17,8 @@ import com.dogsy.R;
 import com.dogsy.application.service.DogService;
 import com.dogsy.domain.model.Dog;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
 import com.dogsy.presentation.MatchingActivity;
@@ -27,6 +32,17 @@ public class RegisterDog extends AppCompatActivity {
     private Dog.DogGender dogGender;
     private String dogBio;
     private Dog.DogSize dogSize;
+
+    private byte[] pictureArray1;
+    private byte[] pictureArray2;
+    private byte[] pictureArray3;
+    //private ArrayList<Integer> pictureId;
+    int SELECT_PICTURE1 = 100;
+    int SELECT_PICTURE2 = 200;
+    int SELECT_PICTURE3 = 300;
+    private Bitmap pictureBitmap1;
+    private Bitmap pictureBitmap2;
+    private Bitmap pictureBitmap3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +108,27 @@ public class RegisterDog extends AppCompatActivity {
             dogGender = Dog.DogGender.FEMALE;
         });
 
+        //from https://www.geeksforgeeks.org/how-to-select-an-image-from-gallery-in-android/
+        ib_dogPic1.setOnClickListener(v -> {
+            Intent i = new Intent();
+            i.setType("image/*");
+            i.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE1);
+        });
 
+        ib_dogPic2.setOnClickListener(v -> {
+            Intent i = new Intent();
+            i.setType("image/*");
+            i.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE2);
+        });
+
+        ib_dogPic3.setOnClickListener(v -> {
+            Intent i = new Intent();
+            i.setType("image/*");
+            i.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE3);
+        });
         // for adding another dog
         ibAddDog.setOnClickListener(view -> {
 
@@ -120,7 +156,63 @@ public class RegisterDog extends AppCompatActivity {
             finish();
         });
     }
+    //from https://www.geeksforgeeks.org/how-to-select-an-image-from-gallery-in-android/
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (resultCode != RESULT_OK) return;
+
+        Uri selectedImageUri = data.getData();
+        if (selectedImageUri == null) return;
+
+        if (requestCode == SELECT_PICTURE1) {
+            ImageButton userpic1 = findViewById(R.id.ib_userpic1);
+            userpic1.setImageURI(selectedImageUri);
+            try {
+                //convert bitmap to byte array to save in db, need to be tested
+                //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                pictureBitmap1 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pictureBitmap1.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                pictureArray1 = stream.toByteArray();
+
+                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (requestCode == SELECT_PICTURE2) {
+            ImageButton userpic2 = findViewById(R.id.ib_userpic2);
+            userpic2.setImageURI(selectedImageUri);
+            try {
+                //convert bitmap to byte array to save in db, need to be tested
+                //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                pictureBitmap2 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pictureBitmap2.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                pictureArray2 = stream.toByteArray();
+
+                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (requestCode == SELECT_PICTURE3) {
+            ImageButton userpic3 = findViewById(R.id.ib_userpic3);
+            userpic3.setImageURI(selectedImageUri);
+            try {
+                //convert bitmap to byte array to save in db, need to be tested
+                //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                pictureBitmap3 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pictureBitmap3.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                pictureArray3 = stream.toByteArray();
+
+                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
     private void addDog(String dogName, Integer dogAge, String dogBreed, String dogBio) {
         // TODO: DB - add dog to db - userID missing?
         //  error handling if someting is wrong or missing? (could be ignored theoretically...)
