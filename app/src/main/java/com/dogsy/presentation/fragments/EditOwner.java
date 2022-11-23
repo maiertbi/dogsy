@@ -107,7 +107,19 @@ public class EditOwner extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent intent = null;
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
         switch (v.getId()){
+            case R.id.ib_userpic1:
+                startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE1);
+                break;
+            case R.id.ib_userpic2:
+                startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE2);
+                break;
+            case R.id.ib_userpic3:
+                startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE3);
+                break;
             case R.id.button_apply:
                 EditText text_name = view.findViewById(R.id.et_name);
                 userName = text_name.getText().toString();
@@ -118,7 +130,7 @@ public class EditOwner extends Fragment implements View.OnClickListener {
                 EditText text_country = view.findViewById(R.id.et_country);
                 userCountry = text_country.getText().toString();
 
-                // TODO: FABIAN - get the new and changed pictures!
+                // TODO: cant get the onActivityResult working here to access the choosen pictures maybe somebody else knows how to (Code for that is already in RegisterUser) -Fabian
 
                 // TODO: DB - update users data in db
                 intent = new Intent(getActivity(), ProfileActivity.class);
@@ -135,4 +147,6 @@ public class EditOwner extends Fragment implements View.OnClickListener {
         startActivity(intent);
         getActivity().finish();
     }
+
+
 }
