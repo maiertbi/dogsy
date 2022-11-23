@@ -44,6 +44,73 @@ public class ChatActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        cRecyclerView = findViewById(R.id.chatting_list_view);
+        mRecyclerView = findViewById(R.id.matching_list_view);
+
+
+        // ========================chatting_list_view=================================
+        /*
+            As far as I understood it the chatting function will not be implemented!
+            So therefore the chatting_list_view can remain with the sample data!
+
+            - Tobi
+         */
+
+        cList = new ArrayList<>();
+        cImageDrawable = new ArrayList<>();
+
+        cAdapter = new ChatRecyclerViewAdaptor(cList);
+        cRecyclerView.setAdapter(cAdapter);
+        cRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
+        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.fabian, null));
+        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.yujin, null));
+        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.tobi, null));
+        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.david, null));
+        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.alex, null));
+
+        addItem(cImageDrawable.get(0), "Fabian",   "hey baby :)");
+        addItem(cImageDrawable.get(1), "Yujin",  "Good morning!");
+        addItem(cImageDrawable.get(2), "Tobi",  "genius");
+        addItem(cImageDrawable.get(3), "David",  "I have a non-binary dog");
+        addItem(cImageDrawable.get(4), "Alex",  "Still no answer from her");
+
+        cAdapter.notifyDataSetChanged();
+
+        //==========================matching_list_view============================
+        mList = new ArrayList<>();
+        mImageDrawable = new ArrayList<>();
+
+        mAdapter = new PhotoRecyclerViewAdaptor(mList);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+        // TODO: DB - change it for backend usage
+        /*
+            I don't know if we are going to implement this. This should be the last thing to do.
+            If we don't have enough time we can leave this with the sample data.
+
+            - Tobi
+         */
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.fabian, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.yujin, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.tobi, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.david, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.alex, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.like, null));
+        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.dislike, null));
+
+        addPhoto(mImageDrawable.get(0));
+        addPhoto(mImageDrawable.get(1));
+        addPhoto(mImageDrawable.get(2));
+        addPhoto(mImageDrawable.get(3));
+        addPhoto(mImageDrawable.get(4));
+        addPhoto(mImageDrawable.get(5));
+        addPhoto(mImageDrawable.get(6));
+
+
+
+
         // bottom navigation
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.chatting);
@@ -68,55 +135,6 @@ public class ChatActivity extends AppCompatActivity {
             }
             return false;
         });
-
-        // ========================chatting_list_view=================================
-        cRecyclerView = findViewById(R.id.chatting_list_view);
-        cList = new ArrayList<>();
-        cImageDrawable = new ArrayList<>();
-
-        cAdapter = new ChatRecyclerViewAdaptor(cList);
-        cRecyclerView.setAdapter(cAdapter);
-        cRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-
-        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.fabian, null));
-        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.yujin, null));
-        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.tobi, null));
-        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.david, null));
-        cImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.alex, null));
-
-        addItem(cImageDrawable.get(0), "Fabian",   "hey baby :)");
-        addItem(cImageDrawable.get(1), "Yujin",  "Good morning!");
-        addItem(cImageDrawable.get(2), "Tobi",  "genius");
-        addItem(cImageDrawable.get(3), "David",  "I have a non-binary dog");
-        addItem(cImageDrawable.get(4), "Alex",  "Still no answer from her");
-
-        cAdapter.notifyDataSetChanged();
-
-        //==========================matching_list_view============================
-        mRecyclerView = findViewById(R.id.matching_list_view);
-        mList = new ArrayList<>();
-        mImageDrawable = new ArrayList<>();
-
-        mAdapter = new PhotoRecyclerViewAdaptor(mList);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-
-        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.fabian, null));
-        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.yujin, null));
-        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.tobi, null));
-        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.david, null));
-        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.alex, null));
-        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.like, null));
-        mImageDrawable.add(ResourcesCompat.getDrawable(getResources(), R.drawable.dislike, null));
-
-        addPhoto(mImageDrawable.get(0));
-        addPhoto(mImageDrawable.get(1));
-        addPhoto(mImageDrawable.get(2));
-        addPhoto(mImageDrawable.get(3));
-        addPhoto(mImageDrawable.get(4));
-        addPhoto(mImageDrawable.get(5));
-        addPhoto(mImageDrawable.get(6));
-
     }
 
     private void addItem(Drawable icon, String mainText, String subText) {
