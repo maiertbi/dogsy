@@ -138,9 +138,33 @@ public class RegisterUser extends AppCompatActivity {
         if (requestCode == SELECT_PICTURE1) {
             ImageButton userpic1 = findViewById(R.id.ib_userpic1);
             userpic1.setImageURI(selectedImageUri);
+            try {
+                //convert bitmap to byte array to save in db, need to be tested
+                //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                pictureBitmap1 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pictureBitmap1.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                pictureArray1 = stream.toByteArray();
+
+                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (requestCode == SELECT_PICTURE2) {
             ImageButton userpic2 = findViewById(R.id.ib_userpic2);
             userpic2.setImageURI(selectedImageUri);
+            try {
+                //convert bitmap to byte array to save in db, need to be tested
+                //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
+                pictureBitmap2 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pictureBitmap2.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                pictureArray2 = stream.toByteArray();
+
+                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (requestCode == SELECT_PICTURE3) {
             ImageButton userpic3 = findViewById(R.id.ib_userpic3);
             userpic3.setImageURI(selectedImageUri);
