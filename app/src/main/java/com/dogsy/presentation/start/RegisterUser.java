@@ -65,8 +65,8 @@ public class RegisterUser extends AppCompatActivity {
         ImageButton ib_userPic3 = findViewById(R.id.ib_userpic3);
         EditText et_bio = findViewById(R.id.et_userbio);
         EditText et_hometown = findViewById(R.id.et_userhometown);
-        EditText et_location = findViewById(R.id.et_usercountry);
-        EditText et_park = findViewById(R.id.et_userphone);
+        EditText et_location = findViewById(R.id.et_userlocation);
+        EditText et_park = findViewById(R.id.et_userpark);
 
         //set spinner values
         Spinner gender = findViewById(R.id.s_gender);
