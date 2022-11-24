@@ -117,7 +117,7 @@ public class RegisterUser extends AppCompatActivity {
             // passing input data to UserService
             // TODO: DB - picture bytearrays must be passed to this function in a List.of(byteArray1, byteArray2, ...)
             //  i was not sure if the pictures get saved in the line below or in the function onActivityResult..? - Tobi
-            UserService.instance.registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark, List.of(pictureArray3));
+            UserService.instance.registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark, List.of(pictureArray1,pictureArray2,pictureArray3));
 
             // UserService.instance.addDog("Doggo", 44, "MALE", true, "SMALL", "YES", "I am a dog.", Set.of("ACTIVE", "DOMINANT"));
 

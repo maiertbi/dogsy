@@ -20,6 +20,7 @@ import com.dogsy.domain.model.Dog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import com.dogsy.presentation.MatchingActivity;
 import com.dogsy.presentation.fragments.UserDogView;
@@ -225,8 +226,9 @@ public class RegisterDog extends AppCompatActivity {
                 dogSize,
                 dogBreed,
                 dogBio,
-                Set.of(),// TODO: Add Dog personalities
-                Collections.emptyList() //TODO: Pass dog pictures
+                Set.of(Dog.Personality.ACTIVE, Dog.Personality.DOMINANT),// TODO: Add Dog personalities for now hardcoded
+                Collections.<byte[]>emptyList()
+                //List.of(pictureArray1,pictureArray2,pictureArray3) //TODO: Pass dog pictures
         );
     }
 
