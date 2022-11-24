@@ -37,6 +37,14 @@ public class RegisterMail extends AppCompatActivity {
             Intent passwordScreen = new Intent(getApplicationContext(), RegisterPassword.class);
             passwordScreen.putExtra("mail", userMail);
             startActivity(passwordScreen);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         });
+    }
+
+    // handles back button
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

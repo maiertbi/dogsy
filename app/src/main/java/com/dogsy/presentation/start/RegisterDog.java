@@ -228,4 +228,11 @@ public class RegisterDog extends AppCompatActivity {
                 Collections.emptyList() //TODO: Pass dog pictures
         );
     }
+
+    // handles back button
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
 }
