@@ -153,6 +153,7 @@ public class RegisterDog extends AppCompatActivity {
 
             Intent intent = new Intent(RegisterDog.this, MatchingActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             finish();
         });
     }
