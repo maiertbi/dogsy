@@ -124,6 +124,7 @@ public class RegisterUser extends AppCompatActivity {
             // TODO: DB - id of user as extra for intent? I think it will be needed for addDog - Tobi
             Intent intent = new Intent(getApplicationContext(), RegisterDog.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         });
     }
 
@@ -183,5 +184,12 @@ public class RegisterUser extends AppCompatActivity {
             }
         }
 
+    }
+
+    // handles back button
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

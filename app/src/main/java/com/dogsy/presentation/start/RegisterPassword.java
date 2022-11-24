@@ -43,6 +43,14 @@ public class RegisterPassword extends AppCompatActivity {
 
             intent.putExtras(bundle);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         });
+    }
+
+    // handles back button
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

@@ -153,6 +153,7 @@ public class RegisterDog extends AppCompatActivity {
 
             Intent intent = new Intent(RegisterDog.this, MatchingActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             finish();
         });
     }
@@ -227,5 +228,12 @@ public class RegisterDog extends AppCompatActivity {
                 Set.of(),// TODO: Add Dog personalities
                 Collections.emptyList() //TODO: Pass dog pictures
         );
+    }
+
+    // handles back button
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

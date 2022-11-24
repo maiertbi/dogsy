@@ -44,6 +44,16 @@ public class LoginActivity extends AppCompatActivity {
             // TODO: DB - error handling ("Wrong user or password")
 
             startActivity(new Intent(getApplicationContext(), MatchingActivity.class));
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         });
+
+
+    }
+
+    // handles back button
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }
