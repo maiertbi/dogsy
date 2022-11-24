@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dogsy.ButtonTouchListener;
 import com.dogsy.R;
 
 public class StartScreen extends AppCompatActivity {
@@ -27,7 +28,10 @@ public class StartScreen extends AppCompatActivity {
         Button btn_login = findViewById(R.id.button_login);
         Button btn_signup = findViewById(R.id.button_signup);
 
+        btn_login.setOnTouchListener(new ButtonTouchListener());
         btn_login.setOnClickListener(v -> {startActivity(new Intent(this, LoginActivity.class));overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);});
+
+        btn_signup.setOnTouchListener(new ButtonTouchListener());
         btn_signup.setOnClickListener(v -> {startActivity(new Intent(this, RegisterMail.class));overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);});
 
         // set Animations
