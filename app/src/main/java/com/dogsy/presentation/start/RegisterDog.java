@@ -168,8 +168,8 @@ public class RegisterDog extends AppCompatActivity {
         if (selectedImageUri == null) return;
 
         if (requestCode == SELECT_PICTURE1) {
-            ImageButton userpic1 = findViewById(R.id.ib_userpic1);
-            userpic1.setImageURI(selectedImageUri);
+            ImageButton dogpic1 = findViewById(R.id.ib_dogpic1);
+            dogpic1.setImageURI(selectedImageUri);
             try {
                 //convert bitmap to byte array to save in db, need to be tested
                 //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
@@ -183,8 +183,8 @@ public class RegisterDog extends AppCompatActivity {
                 e.printStackTrace();
             }
         } else if (requestCode == SELECT_PICTURE2) {
-            ImageButton userpic2 = findViewById(R.id.ib_userpic2);
-            userpic2.setImageURI(selectedImageUri);
+            ImageButton dogpic2 = findViewById(R.id.ib_dogpic2);
+            dogpic2.setImageURI(selectedImageUri);
             try {
                 //convert bitmap to byte array to save in db, need to be tested
                 //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
@@ -198,8 +198,8 @@ public class RegisterDog extends AppCompatActivity {
                 e.printStackTrace();
             }
         } else if (requestCode == SELECT_PICTURE3) {
-            ImageButton userpic3 = findViewById(R.id.ib_userpic3);
-            userpic3.setImageURI(selectedImageUri);
+            ImageButton dogpic3 = findViewById(R.id.ib_dogpic3);
+            dogpic3.setImageURI(selectedImageUri);
             try {
                 //convert bitmap to byte array to save in db, need to be tested
                 //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
