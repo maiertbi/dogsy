@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -23,7 +23,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import com.dogsy.presentation.MatchingActivity;
-import com.dogsy.presentation.fragments.UserDogView;
 
 
 public class RegisterDog extends AppCompatActivity {
@@ -44,6 +43,18 @@ public class RegisterDog extends AppCompatActivity {
     private Bitmap pictureBitmap1;
     private Bitmap pictureBitmap2;
     private Bitmap pictureBitmap3;
+
+    private int countPersonality = 0;
+    private boolean patient = false;
+    private boolean playful = false;
+    private boolean active = false;
+    private boolean dominant = false;
+    private boolean kidfriendly = false;
+    private boolean affectionate = false;
+    private boolean courageous = false;
+
+    Set <Dog.Personality> personalities;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +83,44 @@ public class RegisterDog extends AppCompatActivity {
         RadioButton rb_male = findViewById(R.id.rb_male);
         RadioButton rb_female = findViewById(R.id.rb_female);
 
+        Button btn_patient = findViewById(R.id.button_patient);
+        Button btn_playful = findViewById(R.id.button_playful);
+        Button btn_active = findViewById(R.id.button_active);
+        Button btn_dominant = findViewById(R.id.button_dominant);
+        Button btn_kidfriendly = findViewById(R.id.button_kidfriendly);
+        Button btn_affectionate = findViewById(R.id.button_affectionate);
+        Button btn_courageous = findViewById(R.id.button_courageous);
+
         int colorSelected = Color.argb(255, 0, 0, 0); // #000000
         int colorUnselected = Color.argb(255, 169, 169, 169); // #A9A9A9
+
+        btn_patient.setOnClickListener(view -> {
+            patient = setPersonality(btn_patient, patient);
+        });
+
+        btn_playful.setOnClickListener(view -> {
+            playful = setPersonality(btn_playful, playful);
+        });
+
+        btn_active.setOnClickListener(view -> {
+            active = setPersonality(btn_active, active);
+        });
+
+        btn_dominant.setOnClickListener(view -> {
+            dominant = setPersonality(btn_dominant, dominant);
+        });
+
+        btn_kidfriendly.setOnClickListener(view -> {
+            kidfriendly = setPersonality(btn_kidfriendly, kidfriendly);
+        });
+
+        btn_affectionate.setOnClickListener(view -> {
+            affectionate = setPersonality(btn_affectionate, affectionate);
+        });
+
+        btn_courageous.setOnClickListener(view -> {
+            courageous = setPersonality(btn_courageous, courageous);
+        });
 
         //define dogsize, change image tints
         ib_dogsmall.setOnClickListener(view -> {
@@ -147,6 +194,8 @@ public class RegisterDog extends AppCompatActivity {
         ImageButton ibSubmit = findViewById(R.id.ib_submit);
         ibSubmit.setOnClickListener(view -> {
 
+            listPersonalitys();//inserts checked button to a List<Personalitys>
+
             addDog(et_dogname.getText().toString(),
                     Integer.parseInt(et_dogage.getText().toString()),
                     et_dogbreed.getText().toString(),
@@ -158,6 +207,41 @@ public class RegisterDog extends AppCompatActivity {
             finish();
         });
     }
+
+    private void listPersonalitys(){
+        if(patient)
+            personalities.add(Dog.Personality.PATIENT);
+        if(playful)
+            personalities.add(Dog.Personality.PLAYFUL);
+        if(active)
+            personalities.add(Dog.Personality.ACTIVE);
+        if(dominant)
+            personalities.add(Dog.Personality.DOMINANT);
+        if(kidfriendly)
+            personalities.add(Dog.Personality.KID_FRIENDLY);
+        if(affectionate)
+            personalities.add(Dog.Personality.AFFECTIONATE);
+        if(courageous)
+            personalities.add(Dog.Personality.COURAGEOUS);
+    }
+
+    private boolean setPersonality(Button btn, boolean p) {
+        if(countPersonality >= 3 && !p){
+            return false;
+        }
+        else if(!p) {
+            btn.setBackground(getResources().getDrawable(R.drawable.rounded_corner3));
+            countPersonality++;
+            return true;
+        }
+        else{
+            btn.setBackground(getResources().getDrawable(R.drawable.rounded_corner));
+            countPersonality--;
+            return false;
+        }
+    }
+
+
     //from https://www.geeksforgeeks.org/how-to-select-an-image-from-gallery-in-android/
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -168,8 +252,8 @@ public class RegisterDog extends AppCompatActivity {
         if (selectedImageUri == null) return;
 
         if (requestCode == SELECT_PICTURE1) {
-            ImageButton userpic1 = findViewById(R.id.ib_userpic1);
-            userpic1.setImageURI(selectedImageUri);
+            ImageButton dogpic1 = findViewById(R.id.ib_dogpic1);
+            dogpic1.setImageURI(selectedImageUri);
             try {
                 //convert bitmap to byte array to save in db, need to be tested
                 //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
@@ -178,13 +262,12 @@ public class RegisterDog extends AppCompatActivity {
                 pictureBitmap1.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 pictureArray1 = stream.toByteArray();
 
-                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else if (requestCode == SELECT_PICTURE2) {
-            ImageButton userpic2 = findViewById(R.id.ib_userpic2);
-            userpic2.setImageURI(selectedImageUri);
+            ImageButton dogpic2 = findViewById(R.id.ib_dogpic2);
+            dogpic2.setImageURI(selectedImageUri);
             try {
                 //convert bitmap to byte array to save in db, need to be tested
                 //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
@@ -193,13 +276,12 @@ public class RegisterDog extends AppCompatActivity {
                 pictureBitmap2.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 pictureArray2 = stream.toByteArray();
 
-                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else if (requestCode == SELECT_PICTURE3) {
-            ImageButton userpic3 = findViewById(R.id.ib_userpic3);
-            userpic3.setImageURI(selectedImageUri);
+            ImageButton dogpic3 = findViewById(R.id.ib_dogpic3);
+            dogpic3.setImageURI(selectedImageUri);
             try {
                 //convert bitmap to byte array to save in db, need to be tested
                 //https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database#:~:text=Inorder%20to%20store%20images%20to,to%20set%20it%20to%20imageview.
@@ -208,7 +290,6 @@ public class RegisterDog extends AppCompatActivity {
                 pictureBitmap3.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 pictureArray3 = stream.toByteArray();
 
-                // TODO: DB - pictureArray3 needs to be saved in db as blob, which represents the picture as bytearray
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -226,9 +307,8 @@ public class RegisterDog extends AppCompatActivity {
                 dogSize,
                 dogBreed,
                 dogBio,
-                Set.of(Dog.Personality.ACTIVE, Dog.Personality.DOMINANT),// TODO: Add Dog personalities for now hardcoded
-                Collections.<byte[]>emptyList()
-                //List.of(pictureArray1,pictureArray2,pictureArray3) //TODO: Pass dog pictures
+                personalities,
+                List.of(pictureArray1,pictureArray2,pictureArray3) //TODO: Pass dog pictures
         );
     }
 
