@@ -19,9 +19,9 @@ import com.dogsy.domain.model.Dog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 import com.dogsy.presentation.MatchingActivity;
 
 
@@ -53,7 +53,7 @@ public class RegisterDog extends AppCompatActivity {
     private boolean affectionate = false;
     private boolean courageous = false;
 
-    Set <Dog.Personality> personalities;
+    List <Dog.Personality> personalities = new ArrayList<>();
 
 
     @Override
@@ -179,7 +179,7 @@ public class RegisterDog extends AppCompatActivity {
         });
         // for adding another dog
         ibAddDog.setOnClickListener(view -> {
-
+            listPersonalities();
             addDog(et_dogname.getText().toString(),
                     Integer.parseInt(et_dogage.getText().toString()),
                     et_dogbreed.getText().toString(),
@@ -194,7 +194,7 @@ public class RegisterDog extends AppCompatActivity {
         ImageButton ibSubmit = findViewById(R.id.ib_submit);
         ibSubmit.setOnClickListener(view -> {
 
-            listPersonalitys();//inserts checked button to a List<Personalitys>
+            listPersonalities();
 
             addDog(et_dogname.getText().toString(),
                     Integer.parseInt(et_dogage.getText().toString()),
@@ -208,7 +208,7 @@ public class RegisterDog extends AppCompatActivity {
         });
     }
 
-    private void listPersonalitys(){
+    private void listPersonalities(){
         if(patient)
             personalities.add(Dog.Personality.PATIENT);
         if(playful)
