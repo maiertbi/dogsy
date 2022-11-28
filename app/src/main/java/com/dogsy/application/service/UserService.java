@@ -30,9 +30,12 @@ public class UserService {
     }
 
     public Optional<User> getCurrentUser() {
+        System.out.println("test1");
         if (firebaseAuth.getCurrentUser() == null) {
+            System.out.println("test2");
             return Optional.empty();
         } else {
+            System.out.println("test3");
             try {
                 return Optional.of(fetchUserFromDB(firebaseAuth.getUid()).get());
             } catch (ExecutionException | InterruptedException e) {
@@ -92,7 +95,7 @@ public class UserService {
 
     public void signInUser(String email, String password) {
         System.out.println("Signing in user '" + email + "' with password " + password);
-        firebaseAuth.signInWithEmailAndPassword(email, password);
+        System.out.println(firebaseAuth.signInWithEmailAndPassword(email, password).isSuccessful());
     }
 
     public void registerUser(String userMail, String userPassword, String userName, String userBirthday, String userGender, String userBio, String userHometown, String userLocation, String userPark, List<byte[]> userPictures) {
@@ -146,7 +149,9 @@ public class UserService {
     CompletableFuture<User> fetchUserFromDB(String uid) {
         // Used as a asynchronous wrapper for the user object.
         // The future is returned immediately, and is populated with the server response when finished.
+        System.out.println("test4");
         CompletableFuture<User> userCompletableFuture = new CompletableFuture<>();
+        System.out.println("test5");
         firebaseFirestore
                 .collection(USERS_COLLECTION)
                 .document(requireNonNull(uid))
@@ -157,6 +162,7 @@ public class UserService {
                     user.setPictures(PictureService.instance.fetchPictures(uid, PictureService.PictureFolder.USER_PICTURES));
                     userCompletableFuture.complete(user);
                 });
+        System.out.println("test6");
         return userCompletableFuture;
     }
 

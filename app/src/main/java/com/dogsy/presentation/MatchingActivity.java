@@ -57,7 +57,6 @@ public class MatchingActivity extends AppCompatActivity {
         //Matching Filter
         View toolbarView = findViewById(R.id.include);
         ImageButton btn_filter = toolbarView.findViewById(R.id.hamburger);
-
         User nextUser = MatchingService.instance.fetchNext();
         // TODO: DB - add user id of new user (who can be liked/disliked) as params to .newInstance();
         UserDogView fragment = UserDogView.newInstance(nextUser); //MatchingService.instance.fetchNext().getId()

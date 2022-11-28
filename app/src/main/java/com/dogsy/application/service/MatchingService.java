@@ -24,7 +24,9 @@ public class MatchingService {
 
     public User fetchNext() {
         CompletableFuture<User> userCompletableFuture = new CompletableFuture<>();
+        System.out.println("test-1");
         firebaseFirestore.runTransaction((Transaction.Function<Void>) transaction -> {
+            System.out.println("test0");
             // Only a reference (object representing the path in the DB) to the user document
             DocumentReference userDocumentRef = firebaseFirestore
                     .collection(USERS_COLLECTION)
@@ -32,7 +34,9 @@ public class MatchingService {
                             .getCurrentUser()
                             .orElseThrow(UserService.UnauthenticatedException::new)
                             .getId());
+            System.out.println("test7");
             User user = requireNonNull(transaction.get(userDocumentRef).toObject(User.class));
+            System.out.println("test8");
             DocumentReference userNextRef;
             User userNext;
             do {
