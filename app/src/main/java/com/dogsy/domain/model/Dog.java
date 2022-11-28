@@ -1,5 +1,8 @@
 package com.dogsy.domain.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
@@ -7,7 +10,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties;
 import java.util.List;
 
 @IgnoreExtraProperties
-public class Dog {
+public class Dog implements Parcelable {
     @DocumentId private String id;
     private String name;
     private int age;
@@ -32,6 +35,26 @@ public class Dog {
         this.personalities = personalities;
         this.dogPictures = dogPictures;
     }
+
+    protected Dog(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        age = in.readInt();
+        breed = in.readString();
+        biography = in.readString();
+    }
+
+    public static final Creator<Dog> CREATOR = new Creator<Dog>() {
+        @Override
+        public Dog createFromParcel(Parcel in) {
+            return new Dog(in);
+        }
+
+        @Override
+        public Dog[] newArray(int size) {
+            return new Dog[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -132,6 +155,23 @@ public class Dog {
                 ", biography='" + biography + '\'' +
                 ", personalities=" + personalities +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(name);
+        parcel.writeInt(age);
+        parcel.writeString(gender.name());
+        parcel.writeString(gender.name());
+        parcel.writeString(breed);
+        parcel.writeString(biography);
+        parcel.writeList(personalities);
     }
 
     public enum DogGender {

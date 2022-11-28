@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dogsy.ButtonTouchListener;
+import com.dogsy.application.service.UserService;
 import com.dogsy.presentation.fragments.UserDogView;
 import com.dogsy.presentation.start.RegisterDog;
 import com.dogsy.presentation.subActivities.EditProfileActivity;
@@ -32,7 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         // TODO: DB - add current user to fragment as param
-        UserDogView fragment = UserDogView.newInstance(-1);
+        UserDogView fragment = UserDogView.newInstance(UserService.instance.getCurrentUser().get());
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_profile, fragment).commit();
 
         Button btn_editProfile = findViewById(R.id.button_edit_profile);

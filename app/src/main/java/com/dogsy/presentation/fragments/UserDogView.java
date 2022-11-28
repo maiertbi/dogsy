@@ -12,22 +12,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dogsy.R;
+import com.dogsy.application.service.DogService;
+import com.dogsy.application.service.MatchingService;
+import com.dogsy.domain.model.Dog;
+import com.dogsy.domain.model.User;
 import com.google.android.material.imageview.ShapeableImageView;
 
 public class UserDogView extends Fragment {
-    private static final String ARG_PARAM1 = "userId";
+    private static final String ARG_PARAM1 = "user";
 
-    private Integer userId;
     // TODO: DB - create variables where user data gets stored
+    private User user;
 
     public UserDogView() {
     }
 
     // TODO: DB - change params so the userID gets called
-    public static UserDogView newInstance(Integer userId) {
+    public static UserDogView newInstance(User user) {
         UserDogView fragment = new UserDogView();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, userId);
+        args.putParcelable(ARG_PARAM1, user);
         fragment.setArguments(args);
         return fragment;
     }
@@ -36,7 +40,7 @@ public class UserDogView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            userId = getArguments().getInt(ARG_PARAM1, -1);
+            user = getArguments().getParcelable(ARG_PARAM1);
         }
 
         // TODO: DB - get User and save it to variables
@@ -82,7 +86,7 @@ public class UserDogView extends Fragment {
          */
 
         // create first Dog
-        DogView fragment_dog1 = DogView.newInstance(-1);
+        DogView fragment_dog1 = DogView.newInstance(DogService.instance.getDogById(user.getId(),user.getDogIds().get(0)).get()); // TODO: 28/11/2022 add the dog of the next user
         getParentFragmentManager().beginTransaction().replace(R.id.frame_layout_dog1, fragment_dog1).commit();
 
         return view;

@@ -20,6 +20,7 @@ import com.dogsy.domain.model.Dog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import com.dogsy.presentation.MatchingActivity;
@@ -53,7 +54,7 @@ public class RegisterDog extends AppCompatActivity {
     private boolean affectionate = false;
     private boolean courageous = false;
 
-    Set <Dog.Personality> personalities;
+    Set <Dog.Personality> personalities = new HashSet<>();
 
 
     @Override
@@ -308,7 +309,7 @@ public class RegisterDog extends AppCompatActivity {
                 dogBreed,
                 dogBio,
                 personalities,
-                List.of(pictureArray1,pictureArray2,pictureArray3) //TODO: Pass dog pictures
+                List.of(pictureArray1,pictureArray2,pictureArray3)
         );
     }
 

@@ -10,12 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dogsy.R;
+import com.dogsy.domain.model.Dog;
 import com.google.android.material.imageview.ShapeableImageView;
 
 public class DogView extends Fragment {
     private static final String ARG_PARAM1 = "dogId";
 
-    private Integer dogId;
+    private Dog dog;
     // TODO: DB - create variables where dog data gets stored
 
 
@@ -23,10 +24,10 @@ public class DogView extends Fragment {
     }
 
     // TODO: DB - change params so the dogId gets called
-    public static DogView newInstance(Integer dogId) {
+    public static DogView newInstance(Dog dog) {
         DogView fragment = new DogView();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, dogId);
+        args.putParcelable(ARG_PARAM1, dog);
         fragment.setArguments(args);
         return fragment;
     }
@@ -35,7 +36,7 @@ public class DogView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            dogId = getArguments().getInt(ARG_PARAM1);
+            dog = getArguments().getParcelable(ARG_PARAM1);
         }
 
         // TODO: DB - get Dog and save it to variables

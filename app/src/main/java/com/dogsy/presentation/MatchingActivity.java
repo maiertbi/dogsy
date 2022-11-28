@@ -15,10 +15,12 @@ import android.widget.RadioButton;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dogsy.domain.model.User;
 import com.dogsy.presentation.fragments.UserDogView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.dogsy.R;
+import com.dogsy.application.service.MatchingService;
 import com.google.android.material.slider.RangeSlider;
 
 import java.util.Arrays;
@@ -56,19 +58,20 @@ public class MatchingActivity extends AppCompatActivity {
         View toolbarView = findViewById(R.id.include);
         ImageButton btn_filter = toolbarView.findViewById(R.id.hamburger);
 
+        User nextUser = MatchingService.instance.fetchNext();
         // TODO: DB - add user id of new user (who can be liked/disliked) as params to .newInstance();
-        UserDogView fragment = UserDogView.newInstance(-1);
+        UserDogView fragment = UserDogView.newInstance(nextUser); //MatchingService.instance.fetchNext().getId()
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_matching, fragment).commit();
 
         btn_like.setOnClickListener(view -> {
             //TODO: DB - call new Fragment with new User
-            UserDogView newFragment = UserDogView.newInstance(-1);
+            UserDogView newFragment = UserDogView.newInstance(nextUser);
             getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
         });
 
         btn_dislike.setOnClickListener(view -> {
             //TODO: DB - call new Fragment with new User
-            UserDogView newFragment = UserDogView.newInstance(-1);
+            UserDogView newFragment = UserDogView.newInstance(nextUser);
             getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
         });
 
@@ -166,7 +169,7 @@ public class MatchingActivity extends AppCompatActivity {
                         dogAgeValues = rl_dogage.getValues();//min and max value from range slider for dog age
 
                         //TODO: DB - call new Fragment with new User
-                        UserDogView newFragment = UserDogView.newInstance(-1);
+                        UserDogView newFragment = UserDogView.newInstance(nextUser);
                         getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
 
                         dialog.cancel();

@@ -9,7 +9,10 @@ import com.google.firebase.firestore.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import static com.dogsy.application.service.UserService.USERS_COLLECTION;
 import static java.util.Objects.requireNonNull;
@@ -41,6 +44,19 @@ public class DogService {
         pushDogToDB(dog);
     }
 
+    public Optional<Dog> getDogById(String idUser,String idDog) {
+        if (idUser.isEmpty() || idDog.isEmpty()) {
+            return Optional.empty();
+        } else {
+            try {
+                return Optional.of(fetchDogFromDB(idUser,idDog).get());
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+                return Optional.empty();
+            }
+        }
+    }
+
     private void pushDogToDB(Dog dog) {
         System.out.println("Pushing dog " + dog + " to DB!");
         firebaseFirestore.runTransaction((Transaction.Function<Void>) transaction -> {
@@ -67,6 +83,25 @@ public class DogService {
             System.out.println("Adding dog transaction successful");
             PictureService.instance.pushPictures(dog.getDogPictures(), PictureService.PictureFolder.DOG_PICTURES);
         });
+    }
+
+    CompletableFuture<Dog> fetchDogFromDB(String uidUser, String uidDog) {
+        // Used as a asynchronous wrapper for the dog object.
+        // The future is returned immediately, and is populated with the server response when finished.
+        CompletableFuture<Dog> dogCompletableFuture = new CompletableFuture<>();
+        firebaseFirestore
+                .collection(USERS_COLLECTION)
+                .document(requireNonNull(uidUser))
+                .collection(DOGS_COLLECTION)
+                .document(requireNonNull(uidDog))
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    Dog dog = requireNonNull(documentSnapshot.toObject(Dog.class));
+                    System.out.println("Fetched user " + dog + " from DB!");
+                    dog.setDogPictures(PictureService.instance.fetchPictures(uidDog, PictureService.PictureFolder.DOG_PICTURES));
+                    dogCompletableFuture.complete(dog);
+                });
+        return dogCompletableFuture;
     }
 
 

@@ -1,6 +1,7 @@
 package com.dogsy.application.service;
 
 import com.dogsy.domain.model.User;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -41,6 +42,54 @@ public class UserService {
         }
     }
 
+    public Optional<User> getUserById(String id) {
+        if (id.isEmpty()) {
+            return Optional.empty();
+        } else {
+            try {
+                return Optional.of(fetchUserFromDB(id).get());
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+                return Optional.empty();
+            }
+        }
+    }
+
+    public Optional<User> getRandomUser() {
+        try {
+            List<User> users = getListUsers();
+            if(users.isEmpty())
+                return Optional.empty();
+            else{
+                int random = (int)(Math.random()*users.size());
+                return Optional.of(users.get(random));
+            }
+        }catch(ExecutionException | InterruptedException e){
+            e.printStackTrace();
+        }
+
+        return Optional.empty();
+    }
+
+    public List<User> getListUsers() throws ExecutionException, InterruptedException {
+        CompletableFuture<List<User>> usersCompletableFuture = new CompletableFuture<>();
+        firebaseFirestore
+                .collection(USERS_COLLECTION)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    List<User> users = requireNonNull(documentSnapshot.toObjects(User.class));
+                    System.out.println("List users " + users + " from DB!");
+                    for (User user: users) {
+                        user.setPictures(PictureService.instance.fetchPictures(user.getId(), PictureService.PictureFolder.USER_PICTURES));
+                    }
+                    usersCompletableFuture.complete(users);
+
+
+                });
+
+        return usersCompletableFuture.get();
+    }
+
     public void signInUser(String email, String password) {
         System.out.println("Signing in user '" + email + "' with password " + password);
         firebaseAuth.signInWithEmailAndPassword(email, password);
@@ -63,6 +112,8 @@ public class UserService {
                                 userPark.trim(),
                                 new ArrayList<>(), // TODO: check if list.empty() works
                                 new ArrayList<>(), // TODO: check if list.empty() works
+                                new ArrayList<>(),
+                                new ArrayList<>(),
                                 userPictures);
                         // User is stored in DB with uid from Firebase Auth
                         pushUserToDB(user);
