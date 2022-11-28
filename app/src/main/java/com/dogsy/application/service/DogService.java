@@ -26,7 +26,7 @@ public class DogService {
     private DogService() {
     }
 
-    public void addDog(String dogName, int dogAge, Dog.DogGender dogGender, Dog.DogSize dogSize, String dogBreed, String dogBio, Set<Dog.Personality> dogPersonalities, List<byte[]> dogPictures) {
+    public void addDog(String dogName, int dogAge, Dog.DogGender dogGender, Dog.DogSize dogSize, String dogBreed, String dogBio, List<Dog.Personality> dogPersonalities, List<byte[]> dogPictures) {
         Dog dog = new Dog(
                 null,
                 dogName.trim(),
