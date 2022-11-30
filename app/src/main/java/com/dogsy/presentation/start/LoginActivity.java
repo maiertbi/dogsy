@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dogsy.R;
 import com.dogsy.application.service.UserService;
 import com.dogsy.presentation.MatchingActivity;
-import com.dogsy.R;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,11 +40,14 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            UserService.instance.signInUser(email, password);
-            // TODO: DB - error handling ("Wrong user or password")
 
+            UserService.instance.signInUser(email, password);
             startActivity(new Intent(getApplicationContext(), MatchingActivity.class));
             overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+
+            // TODO: DB - error handling ("Wrong user or password")
+
+
         });
 
 

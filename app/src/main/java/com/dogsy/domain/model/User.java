@@ -21,15 +21,15 @@ public class User implements Parcelable {
     private String biography;
     private String park;
     private List<String> dogIds;
+    private List<String> matches;
     private List<String> likedUsers;
-    private List<String> dislikedUsers;
-    private List<String> matchedUsers;
+    private List<String> shownUsers;
     @Exclude private List<byte[]> pictures;
 
     public User() {
     }
 
-    public User(String id, String firstName, Date birthday, Gender gender, String hometown, String location, String biography, String park, List<String> dogIds, List<String> likedUsers, List<String> dislikedUsers, List<String> matchedUsers, List<byte[]> pictures) {
+    public User(String id, String firstName, Date birthday, Gender gender, String hometown, String location, String biography, String park, List<String> dogIds, List<String> matches, List<String> likedUsers, List<String> shownUsers, List<byte[]> pictures) {
         this.id = id;
         this.firstName = firstName;
         this.birthday = birthday;
@@ -39,9 +39,9 @@ public class User implements Parcelable {
         this.biography = biography;
         this.park = park;
         this.dogIds = dogIds;
+        this.matches = matches;
         this.likedUsers = likedUsers;
-        this.dislikedUsers = dislikedUsers;
-        this.matchedUsers = matchedUsers;
+        this.shownUsers = shownUsers;
         this.pictures = pictures;
     }
 
@@ -54,8 +54,9 @@ public class User implements Parcelable {
         park = in.readString();
         dogIds = in.createStringArrayList();
         likedUsers = in.createStringArrayList();
-        dislikedUsers = in.createStringArrayList();
-        matchedUsers = in.createStringArrayList();
+        matches = in.createStringArrayList();
+        likedUsers = in.createStringArrayList();
+        shownUsers = in.createStringArrayList();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -142,6 +143,14 @@ public class User implements Parcelable {
         this.dogIds = dogIds;
     }
 
+    public List<String> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<String> matches) {
+        this.matches = matches;
+    }
+
     public List<String> getLikedUsers() {
         return likedUsers;
     }
@@ -150,20 +159,12 @@ public class User implements Parcelable {
         this.likedUsers = likedUsers;
     }
 
-    public List<String> getDislikedUsers() {
-        return dislikedUsers;
+    public List<String> getShownUsers() {
+        return shownUsers;
     }
 
-    public void setDislikedUsers(List<String> dislikedUsers) {
-        this.dislikedUsers = dislikedUsers;
-    }
-
-    public List<String> getMatchedUsers() {
-        return matchedUsers;
-    }
-
-    public void setMatchedUsers(List<String> matchedUsers) {
-        this.matchedUsers = matchedUsers;
+    public void setShownUsers(List<String> shownUsers) {
+        this.shownUsers = shownUsers;
     }
 
     @Exclude
@@ -202,14 +203,14 @@ public class User implements Parcelable {
                 ", location='" + location + '\'' +
                 ", biography='" + biography + '\'' +
                 ", park='" + park + '\'' +
-                ", dogs=" + dogIds +
+                ", dogIds=" + dogIds +
+                ", matches=" + matches +
                 ", likedUsers=" + likedUsers +
-                ", dislikedUsers=" + dislikedUsers +
-                ", matchedUsers=" + matchedUsers +
+                ", shownUsers=" + shownUsers +
                 '}';
     }
 
-    @Override
+  @Override
     public int describeContents() {
         return 0;
     }
@@ -225,11 +226,12 @@ public class User implements Parcelable {
         parcel.writeString(biography);
         parcel.writeString(park);
         parcel.writeStringList(dogIds);
+        parcel.writeStringList(matches);
         parcel.writeStringList(likedUsers);
-        parcel.writeStringList(dislikedUsers);
-        parcel.writeStringList(matchedUsers);
-    }
+        parcel.writeStringList(shownUsers);
 
+
+    }
 
     public enum Gender {
         MALE,

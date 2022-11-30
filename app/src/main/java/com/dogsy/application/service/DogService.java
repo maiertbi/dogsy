@@ -10,7 +10,6 @@ import com.google.firebase.firestore.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -29,7 +28,7 @@ public class DogService {
     private DogService() {
     }
 
-    public void addDog(String dogName, int dogAge, Dog.DogGender dogGender, Dog.DogSize dogSize, String dogBreed, String dogBio, Set<Dog.Personality> dogPersonalities, List<byte[]> dogPictures) {
+    public void addDog(String dogName, int dogAge, Dog.DogGender dogGender, Dog.DogSize dogSize, String dogBreed, String dogBio, List<Dog.Personality> dogPersonalities, List<byte[]> dogPictures) {
         Dog dog = new Dog(
                 null,
                 dogName.trim(),

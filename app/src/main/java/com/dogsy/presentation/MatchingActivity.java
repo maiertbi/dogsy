@@ -1,12 +1,8 @@
 package com.dogsy.presentation;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,16 +11,15 @@ import android.widget.RadioButton;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dogsy.R;
+import com.dogsy.application.service.MatchingService;
 import com.dogsy.domain.model.User;
 import com.dogsy.presentation.fragments.UserDogView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import com.dogsy.R;
-import com.dogsy.application.service.MatchingService;
 import com.google.android.material.slider.RangeSlider;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class MatchingActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -57,22 +52,46 @@ public class MatchingActivity extends AppCompatActivity {
         //Matching Filter
         View toolbarView = findViewById(R.id.include);
         ImageButton btn_filter = toolbarView.findViewById(R.id.hamburger);
-        User nextUser = MatchingService.instance.fetchNext();
-        // TODO: DB - add user id of new user (who can be liked/disliked) as params to .newInstance();
-        UserDogView fragment = UserDogView.newInstance(nextUser); //MatchingService.instance.fetchNext().getId()
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_matching, fragment).commit();
 
-        btn_like.setOnClickListener(view -> {
-            //TODO: DB - call new Fragment with new User
-            UserDogView newFragment = UserDogView.newInstance(nextUser);
-            getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
+        MatchingService.instance.fetchNext().addOnSuccessListener(queryDocumentSnapshots -> {
+            Optional<User> optionalUser = queryDocumentSnapshots
+                    .getDocuments()
+                    .stream()
+                    .findFirst()
+                    .map(documentSnapshot -> documentSnapshot.toObject(User.class));
+
+            System.err.println("BITTE NEIN");
+            System.err.println(optionalUser);
+
+            if(optionalUser.isPresent()) {
+                User user = new User();
+                user = optionalUser.get();
+                // TODO: Handel no user case
+
+                // TODO: DB - add user id of new user (who can be liked/disliked) as params to .newInstance();
+                UserDogView fragment = UserDogView.newInstance(user); //MatchingService.instance.fetchNext().getId()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_matching, fragment).commit();
+
+                User finalUser = user;
+                btn_like.setOnClickListener(view -> {
+                    //TODO: DB - call new Fragment with new User
+                    UserDogView newFragment = UserDogView.newInstance(finalUser);
+                    getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
+                });
+
+                User finalUser1 = user;
+                btn_dislike.setOnClickListener(view -> {
+                    //TODO: DB - call new Fragment with new User
+                    UserDogView newFragment = UserDogView.newInstance(finalUser1);
+                    getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
+                });
+            }
+
         });
 
-        btn_dislike.setOnClickListener(view -> {
-            //TODO: DB - call new Fragment with new User
-            UserDogView newFragment = UserDogView.newInstance(nextUser);
-            getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
-        });
+
+
+
 
 
         // filtering users
@@ -168,8 +187,8 @@ public class MatchingActivity extends AppCompatActivity {
                         dogAgeValues = rl_dogage.getValues();//min and max value from range slider for dog age
 
                         //TODO: DB - call new Fragment with new User
-                        UserDogView newFragment = UserDogView.newInstance(nextUser);
-                        getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
+                        //UserDogView newFragment = UserDogView.newInstance(nextUser);
+                        //getSupportFragmentManager().beginTransaction().remove(fragment).replace(R.id.frame_layout_matching, newFragment).commit();
 
                         dialog.cancel();
                     }

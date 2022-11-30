@@ -1,20 +1,15 @@
 package com.dogsy.presentation.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.dogsy.R;
-import com.dogsy.application.service.DogService;
-import com.dogsy.application.service.MatchingService;
-import com.dogsy.domain.model.Dog;
 import com.dogsy.domain.model.User;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -86,8 +81,9 @@ public class UserDogView extends Fragment {
          */
 
         // create first Dog
-        DogView fragment_dog1 = DogView.newInstance(DogService.instance.getDogById(user.getId(),user.getDogIds().get(0)).get()); // TODO: 28/11/2022 add the dog of the next user
-        getParentFragmentManager().beginTransaction().replace(R.id.frame_layout_dog1, fragment_dog1).commit();
+
+        //DogView fragment_dog1 = DogView.newInstance(DogService.instance.getDogById(user.getId(),user.getDogIds().get(0)).get()); // TODO: 28/11/2022 add the dog of the next user
+        //getParentFragmentManager().beginTransaction().replace(R.id.frame_layout_dog1, fragment_dog1).commit();
 
         return view;
     }

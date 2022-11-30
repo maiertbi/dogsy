@@ -1,7 +1,6 @@
 package com.dogsy.application.service;
 
 import com.dogsy.domain.model.User;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -37,7 +36,11 @@ public class UserService {
         } else {
             System.out.println("test3");
             try {
-                return Optional.of(fetchUserFromDB(firebaseAuth.getUid()).get());
+                CompletableFuture<User> userCompletableFuture = fetchUserFromDB(firebaseAuth.getUid());
+                User user = userCompletableFuture.get();
+                return Optional.of(user);
+
+                //Optional.of(fetchUserFromDB(firebaseAuth.getUid()));
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
                 return Optional.empty();
@@ -45,7 +48,7 @@ public class UserService {
         }
     }
 
-    public Optional<User> getUserById(String id) {
+ /*   public Optional<User> getUserById(String id) {
         if (id.isEmpty()) {
             return Optional.empty();
         } else {
@@ -56,9 +59,9 @@ public class UserService {
                 return Optional.empty();
             }
         }
-    }
+    }*/
 
-    public Optional<User> getRandomUser() {
+    /*public Optional<User> getRandomUser() {
         try {
             List<User> users = getListUsers();
             if(users.isEmpty())
@@ -72,30 +75,28 @@ public class UserService {
         }
 
         return Optional.empty();
-    }
+    }*/
 
-    public List<User> getListUsers() throws ExecutionException, InterruptedException {
+    /*public List<User> getListUsers() throws ExecutionException, InterruptedException {
         CompletableFuture<List<User>> usersCompletableFuture = new CompletableFuture<>();
         firebaseFirestore
                 .collection(USERS_COLLECTION)
                 .get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    List<User> users = requireNonNull(documentSnapshot.toObjects(User.class));
-                    System.out.println("List users " + users + " from DB!");
-                    for (User user: users) {
-                        user.setPictures(PictureService.instance.fetchPictures(user.getId(), PictureService.PictureFolder.USER_PICTURES));
-                    }
+                .addOnSuccessListener(querySnapshot -> {
+                    List<User> users = new ArrayList<>();
+                    querySnapshot.getDocuments().forEach(documentSnapshot -> {
+                        User user = documentSnapshot.toObject(User.class);
+                        requireNonNull(user).setPictures(PictureService.instance.fetchPictures(user.getId(), PictureService.PictureFolder.USER_PICTURES));
+                        users.add(user);
+                    });
                     usersCompletableFuture.complete(users);
-
-
                 });
-
         return usersCompletableFuture.get();
-    }
+    }*/
 
     public void signInUser(String email, String password) {
         System.out.println("Signing in user '" + email + "' with password " + password);
-        System.out.println(firebaseAuth.signInWithEmailAndPassword(email, password).isSuccessful());
+        firebaseAuth.signInWithEmailAndPassword(email, password);
     }
 
     public void registerUser(String userMail, String userPassword, String userName, String userBirthday, String userGender, String userBio, String userHometown, String userLocation, String userPark, List<byte[]> userPictures) {
@@ -166,11 +167,11 @@ public class UserService {
         return userCompletableFuture;
     }
 
-    static class UnauthenticatedException extends RuntimeException {
-        UnauthenticatedException() {
+    public static class UnauthenticatedException extends RuntimeException {
+        public UnauthenticatedException() {
             super("User is not authenticated");
         }
-        UnauthenticatedException(String message) {
+        public UnauthenticatedException(String message) {
             super("User is not authenticated: " + message);
         }
     }
