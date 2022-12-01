@@ -67,8 +67,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mcv1_usermail"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:text=""
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_regular"
         android:layout_marginHorizontal="20dp"/>

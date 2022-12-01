@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -177,13 +178,41 @@ public class RegisterDog extends AppCompatActivity {
             i.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE3);
         });
+
         // for adding another dog
         ibAddDog.setOnClickListener(view -> {
             listPersonalities();
-            addDog(et_dogname.getText().toString(),
-                    Integer.parseInt(et_dogage.getText().toString()),
-                    et_dogbreed.getText().toString(),
-                    et_dogbio.getText().toString());
+
+            dogName = et_dogname.getText().toString();
+            if(dogName.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please enter your dog's name", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String dog_age = et_dogage.getText().toString();
+            if(dog_age.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please enter your dog's age", Toast.LENGTH_SHORT).show();
+                return;
+            }else dogAge = Integer.parseInt(dog_age);
+
+            dogBreed = et_dogbreed.getText().toString();
+            if(dogBreed.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please enter your dog's breed", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            dogBio = et_dogbio.getText().toString();
+            if(dogBio.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please write about your dog", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if((pictureArray1==null)|(pictureArray2==null)|(pictureArray3==null)){
+                Toast.makeText(RegisterDog.this,"Please upload at least 3 photos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            addDog(dogName, dogAge, dogBreed, dogBio);
 
             Intent intent = new Intent(RegisterDog.this, RegisterDog.class);
             startActivity(intent);
@@ -196,10 +225,36 @@ public class RegisterDog extends AppCompatActivity {
 
             listPersonalities();
 
-            addDog(et_dogname.getText().toString(),
-                    Integer.parseInt(et_dogage.getText().toString()),
-                    et_dogbreed.getText().toString(),
-                    et_dogbio.getText().toString());
+            dogName = et_dogname.getText().toString();
+            if(dogName.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please enter your dog's name", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String dog_age = et_dogage.getText().toString();
+            if(dog_age.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please enter your dog's age", Toast.LENGTH_SHORT).show();
+                return;
+            }else dogAge = Integer.parseInt(dog_age);
+
+            dogBreed = et_dogbreed.getText().toString();
+            if(dogBreed.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please enter your dog's breed", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            dogBio = et_dogbio.getText().toString();
+            if(dogBio.matches("")) {
+                Toast.makeText(RegisterDog.this,"Please write about your dog", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if((pictureArray1==null)|(pictureArray2==null)|(pictureArray3==null)){
+                Toast.makeText(RegisterDog.this,"Please upload your dog's photos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            addDog(dogName, dogAge, dogBreed, dogBio);
 
             Intent intent = new Intent(RegisterDog.this, MatchingActivity.class);
             startActivity(intent);
@@ -300,6 +355,8 @@ public class RegisterDog extends AppCompatActivity {
         // TODO: DB - add dog to db - userID missing?
         //  error handling if someting is wrong or missing? (could be ignored theoretically...)
         // Code to add dog to db
+
+
         DogService.instance.addDog(
                 dogName,
                 dogAge,

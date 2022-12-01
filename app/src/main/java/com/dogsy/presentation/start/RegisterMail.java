@@ -27,17 +27,23 @@ public class RegisterMail extends AppCompatActivity {
         ib.setOnClickListener(view -> {
             String userMail = et.getText().toString();
 
-            // TODO: FABIAN - add regex-check to the if clause (https://www.w3schools.com/java/java_regex.asp)
-            if (userMail.isEmpty()) {
-                // TODO: FABIAN - change text-appeareance (color, position) to make it look like LoginActivity.java
-                tv.setText("Please enter a correct email");
+          if (userMail.isEmpty()) {
+                tv.setText("Please enter your email address");
                 return;
             }
+            if(!android.util.Patterns.EMAIL_ADDRESS.matcher(userMail).matches())
+            {
+                tv.setText("Please enter the correct email address");
+                // Toast.makeText(LoginActivity.this,"Please enter the correct email.",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            else{
+                Intent passwordScreen = new Intent(getApplicationContext(), RegisterPassword.class);
+                passwordScreen.putExtra("mail", userMail);
+                startActivity(passwordScreen);
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+            }
 
-            Intent passwordScreen = new Intent(getApplicationContext(), RegisterPassword.class);
-            passwordScreen.putExtra("mail", userMail);
-            startActivity(passwordScreen);
-            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         });
     }
 

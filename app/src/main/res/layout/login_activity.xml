@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/t1_login"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="113dp"
+        android:layout_marginTop="100dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp">
 
@@ -83,7 +83,7 @@
         android:layout_marginTop="19dp"
         android:fontFamily="@font/poppins_bold"
         android:text=""
-        android:textColor="#FF3838"
+        android:textColor="@color/red"
         android:textSize="20sp" />
 
 
