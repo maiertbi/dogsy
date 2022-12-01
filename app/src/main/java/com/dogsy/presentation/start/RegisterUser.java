@@ -6,11 +6,13 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -106,17 +108,69 @@ public class RegisterUser extends AppCompatActivity {
 
         ImageButton ib = findViewById(R.id.ib_usersubmit);
         ib.setOnClickListener(view -> {
+            //Toast.makeText(RegisterUser.this,"submit", Toast.LENGTH_SHORT).show();
+
             String userName = et_name.getText().toString();
-            String userBirthday = et_dd.getText().toString() + "." + et_mm.getText().toString() + "." + et_yyyy.getText().toString();
+            if(userName.matches("")) {
+                Toast.makeText(RegisterUser.this,"Please enter your name", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int day_num;
+            int month_num;
+            int year_num;
+
+            String day = et_dd.getText().toString();
+            if(day.matches("")) day_num = 0;
+            else day_num = Integer.parseInt(day);
+
+            String month = et_mm.getText().toString();
+            if(day.matches("")) month_num = 0;
+            else month_num = Integer.parseInt(month);
+
+            String year = et_yyyy.getText().toString();
+            if(day.matches("")) year_num = 0;
+            else year_num = Integer.parseInt(year);
+
+            String userBirthday;
+
+            if(day.matches("")|month.matches("")|year.matches("")|(day_num>31)|(day_num==0)|(month_num>12)|(month_num==0)|(year_num<1900)|(year_num>2100)|(year_num==0)) {
+                Toast.makeText(RegisterUser.this,"Please check your birthday", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            else userBirthday = day + "." + month + "." + year;
+
             String userGender = gender.getSelectedItem().toString().toUpperCase();
             String userBio = et_bio.getText().toString();
             String userHometown = et_hometown.getText().toString();
             String userLocation = et_location.getText().toString();
             String userPark = et_park.getText().toString();
 
+
+            if(userBio.matches("")) {
+                Toast.makeText(RegisterUser.this,"Please write about yourself", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(userHometown.matches("")) {
+                Toast.makeText(RegisterUser.this,"Please enter your hometown", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(userLocation.matches("")) {
+                Toast.makeText(RegisterUser.this,"Please enter your location", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(userPark.matches("")) {
+                Toast.makeText(RegisterUser.this,"Please enter your park", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             // passing input data to UserService
             // TODO: DB - picture bytearrays must be passed to this function in a List.of(byteArray1, byteArray2, ...)
             //  i was not sure if the pictures get saved in the line below or in the function onActivityResult..? - Tobi
+            if((pictureArray1==null)|(pictureArray2==null)|(pictureArray3==null)){
+                Toast.makeText(RegisterUser.this,"Please upload at least 3 photos", Toast.LENGTH_SHORT).show();
+                return;
+            }
             UserService.instance.registerUser(userMail, userPassword, userName, userBirthday, userGender, userBio, userHometown, userLocation, userPark, List.of(pictureArray1,pictureArray2,pictureArray3));
 
             // UserService.instance.addDog("Doggo", 44, "MALE", true, "SMALL", "YES", "I am a dog.", Set.of("ACTIVE", "DOMINANT"));
