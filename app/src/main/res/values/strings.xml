@@ -11,7 +11,7 @@
     <string name="please_enter_your_email_address_to_create_an_account">Please enter your email address to create an account</string>
     <string name="add_email">Add email</string>
     <string name="please_enter_a_password">Please enter a password</string>
-    <string name="your_password_needs_to_contain_an_upper_case_letter_number_and_at_least_one_special_character">Your password needs to contain an upper case letter, number and at least one special character</string>
+    <string name="password_condition">Your password has to contain at least 1 number, 1 upper case letter, and 1 lower case letter\n (between 8-20 characters long)</string>
     <string name="enter_password">Enter password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="edit_profile">Edit Profile</string>
